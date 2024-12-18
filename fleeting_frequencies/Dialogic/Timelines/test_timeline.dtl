@@ -1,0 +1,8 @@
+join test_character center
+test_character: Hey this is a puzzle.
+test_character: What is the code from the future?
+[text_input text="Code:" var="code"]
+if {code} == "123456":
+	test_character: You solved the puzzle!
+else:
+	test_character: Wrong!

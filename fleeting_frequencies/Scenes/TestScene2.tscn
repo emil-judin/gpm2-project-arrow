@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://xwip5ih8ie1p"]
+
+[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://Scenes/GameManager.tscn" id="1_kqpb0"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/ItemManager.tscn" id="2_booxo"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/InteractionManager.tscn" id="3_0mlfd"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/InventoryUi.tscn" id="4_y0deq"]
+[ext_resource type="Texture2D" uid="uid://b31nu4llskxd6" path="res://icon.svg" id="5_axjhn"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/MalePlayer.tscn" id="6_ihhgi"]
+[ext_resource type="PackedScene" uid="uid://dnn5ekaaxpriy" path="res://Scenes/Items/Item.tscn" id="7_1cajo"]
+[ext_resource type="PackedScene" uid="uid://c7nmpsspohoew" path="res://Scenes/Door.tscn" id="9_tgnc5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bbl7n"]
+vertices = PackedVector2Array(48.8516, 47.8125, 0.539063, 49.0469, -46.6875, 49.0469, -51.1719, 43.3203, -52.0938, -27.1484, -51.6328, -47.1328, -40.2891, -49.3281, -6.82813, -47.7188, 50.9609, 46.1875, 23.2031, -48.3906, 29.7266, -48.3906, 40.3984, -48.0781, 45.4766, -46.8906, 50.8125, -44.5703)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12, 13, 8, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-41.0175, -59.3814, -6.70324, -57.732, 22.9825, -58.3918, 30.005, -58.3918, 41.6559, -58.0619, 48.6783, -56.4124, 60.808, -51.134, 60.9676, 51.134, 52.3491, 57.7319, 0.798004, 59.0515, -51.5511, 59.0515, -61.1271, 46.8454, -62.0848, -27.3814, -61.4464, -55.4227)])
+
+[node name="TestScene" type="Node2D"]
+position = Vector2(-9, 3)
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="GameManager" parent="Managers" node_paths=PackedStringArray("player", "item_manager", "npc_manager", "inventory_ui") instance=ExtResource("1_kqpb0")]
+player = NodePath("../../Player")
+item_manager = NodePath("../ItemManager")
+npc_manager = NodePath("../NpcManager")
+inventory_ui = NodePath("../../CanvasLayer/InventoryUi")
+
+[node name="ItemManager" parent="Managers" instance=ExtResource("2_booxo")]
+
+[node name="NpcManager" parent="Managers" instance=ExtResource("3_0mlfd")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("4_y0deq")]
+
+[node name="Ground" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(603, 340)
+scale = Vector2(6.26563, 3.03125)
+texture = ExtResource("5_axjhn")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Ground"]
+position = Vector2(-9.74127e-06, 0.329895)
+navigation_polygon = SubResource("NavigationPolygon_bbl7n")
+
+[node name="Player" parent="." instance=ExtResource("6_ihhgi")]
+position = Vector2(545, 340)
+
+[node name="Item3" parent="." instance=ExtResource("7_1cajo")]
+position = Vector2(880, 244)
+id = "godot_icon_3"
+item_name = "Godot Icon"
+texture = ExtResource("5_axjhn")
+description = "Obligatory Godot Icon"
+is_collectible = true
+
+[node name="Item4" parent="." instance=ExtResource("7_1cajo")]
+modulate = Color(1, 0.16, 0.16, 1)
+position = Vector2(872, 442)
+id = "godot_icon_4"
+item_name = "Godot Icon"
+texture = ExtResource("5_axjhn")
+description = "Obligatory Godot Icon"
+is_collectible = true
+
+[node name="Door" parent="." instance=ExtResource("9_tgnc5")]
+position = Vector2(195, 343)
+scene_path = "res://Scenes/TestScene.tscn"

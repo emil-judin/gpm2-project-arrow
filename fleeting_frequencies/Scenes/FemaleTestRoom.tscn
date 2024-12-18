@@ -1,0 +1,112 @@
+[gd_scene load_steps=17 format=3 uid="uid://jpgcny5uwh53"]
+
+[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://Scenes/GameManager.tscn" id="1_l7mtg"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/ItemManager.tscn" id="2_axbq1"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/InteractionManager.tscn" id="3_v7lko"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/InventoryUi.tscn" id="4_o4iso"]
+[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/InteractionUi.tscn" id="5_c3e8e"]
+[ext_resource type="Texture2D" uid="uid://bcgwuybeeitpj" path="res://Sprites/Room 1.png" id="6_lpasa"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/MalePlayer.tscn" id="6_uky51"]
+[ext_resource type="PackedScene" uid="uid://dytp3kqr7x2v8" path="res://Scenes/Npc.tscn" id="7_sfn0l"]
+[ext_resource type="PackedScene" uid="uid://b06goj2x6qcjf" path="res://Scenes/FemalePlayer.tscn" id="10_l2ryv"]
+[ext_resource type="Texture2D" uid="uid://dvldpldmg83jb" path="res://Sprites/Mouse.png" id="10_s45i8"]
+[ext_resource type="PackedScene" uid="uid://cts0h8sbw20sh" path="res://Scenes/Items/Mouse.tscn" id="12_6ovu3"]
+[ext_resource type="Script" path="res://Scripts/mouse.gd" id="12_vpoud"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qniex"]
+vertices = PackedVector2Array(160, 47, -160, 47, -160, 46, 160, 46)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-160, 46, -160, 47, 160, 47, 160, 46)])
+agent_radius = 0.0
+
+[sub_resource type="Gradient" id="Gradient_cgcmq"]
+offsets = PackedFloat32Array(0, 0.681293)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d5m7o"]
+gradient = SubResource("Gradient_cgcmq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2oes"]
+size = Vector2(9, 20)
+
+[node name="TestRoom" type="Node2D"]
+position = Vector2(160, 90)
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="GameManager" parent="Managers" node_paths=PackedStringArray("player", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui") instance=ExtResource("1_l7mtg")]
+player = NodePath("../../FemalePlayer")
+item_manager = NodePath("../ItemManager")
+interaction_manager = NodePath("../NpcManager")
+inventory_ui = NodePath("../../CanvasLayer/InventoryUi")
+interaction_ui = NodePath("../../CanvasLayer/InteractionUi")
+
+[node name="ItemManager" parent="Managers" instance=ExtResource("2_axbq1")]
+
+[node name="NpcManager" parent="Managers" instance=ExtResource("3_v7lko")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InteractionUi" parent="CanvasLayer" instance=ExtResource("5_c3e8e")]
+
+[node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("4_o4iso")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -1)
+navigation_polygon = SubResource("NavigationPolygon_qniex")
+
+[node name="Room" type="Sprite2D" parent="."]
+texture = ExtResource("6_lpasa")
+
+[node name="MalePlayer" parent="." instance=ExtResource("6_uky51")]
+visible = false
+position = Vector2(-16, 46)
+
+[node name="Npc" parent="." instance=ExtResource("7_sfn0l")]
+visible = false
+position = Vector2(93, 26)
+
+[node name="FemalePlayer" parent="." instance=ExtResource("10_l2ryv")]
+position = Vector2(-10, 46)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-87, -50)
+color = Color(0.767337, 0.449868, 1.92523e-07, 1)
+energy = 1.19
+texture = SubResource("GradientTexture2D_d5m7o")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.286853, 0.677329, 0.530953, 1)
+energy = 0.6
+blend_mode = 1
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("mouse")]
+position = Vector2(-130, 28)
+script = ExtResource("12_vpoud")
+mouse = NodePath("../mouse2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 7)
+shape = SubResource("RectangleShape2D_t2oes")
+
+[node name="mouse2" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="mouse2"]
+position = Vector2(-129, 45)
+texture = ExtResource("10_s45i8")
+
+[node name="Npc2" parent="." instance=ExtResource("7_sfn0l")]
+position = Vector2(93, 26)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Mouse" parent="." instance=ExtResource("12_6ovu3")]
+position = Vector2(47, 31)
+
+[connection signal="triggered_character_switch" from="CanvasLayer/InteractionUi" to="Managers/GameManager" method="switch_character"]
+[connection signal="clicked_drop_item" from="CanvasLayer/InventoryUi" to="Managers/GameManager" method="initiate_drop_item"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="clicked"]

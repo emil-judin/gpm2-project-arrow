@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://4yve2v762c7c"]
+
+[ext_resource type="Script" path="res://Scripts/computer.gd" id="1_l0i1l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_incss"]
+size = Vector2(14, 10)
+
+[node name="Computer" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_l0i1l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.141176, 1, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_incss")
+disabled = true

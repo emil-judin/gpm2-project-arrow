@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://bv810eum4yasy"]
+
+[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://Scenes/GameManager.tscn" id="1_coq8o"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/ItemManager.tscn" id="2_awipm"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/NpcManager.tscn" id="3_1jssl"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/InventoryUi.tscn" id="4_88ucq"]
+[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/InteractionUi.tscn" id="5_igf8n"]
+[ext_resource type="Texture2D" uid="uid://bgws23257thjj" path="res://Sprites/Test_Room.png" id="5_pbgtp"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/MalePlayer.tscn" id="6_bxmv0"]
+[ext_resource type="PackedScene" uid="uid://dytp3kqr7x2v8" path="res://Scenes/Npc.tscn" id="7_56ua5"]
+[ext_resource type="PackedScene" uid="uid://dnn5ekaaxpriy" path="res://Scenes/Item.tscn" id="8_i382x"]
+[ext_resource type="Texture2D" uid="uid://dh7s8y7c73fui" path="res://Sprites/Side.png" id="9_0uc7y"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qniex"]
+vertices = PackedVector2Array(160, 47, -160, 47, -160, 46, 160, 46)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-160, 46, -160, 47, 160, 47, 160, 46)])
+agent_radius = 0.0
+
+[node name="TestRoom" type="Node2D"]
+position = Vector2(160, 90)
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="GameManager" parent="Managers" node_paths=PackedStringArray("player", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui") instance=ExtResource("1_coq8o")]
+player = NodePath("../../MalePlayer")
+item_manager = NodePath("../ItemManager")
+interaction_manager = NodePath("../NpcManager")
+inventory_ui = NodePath("../../CanvasLayer/InventoryUi")
+interaction_ui = NodePath("../../CanvasLayer/InteractionUi")
+
+[node name="ItemManager" parent="Managers" instance=ExtResource("2_awipm")]
+
+[node name="NpcManager" parent="Managers" instance=ExtResource("3_1jssl")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("4_88ucq")]
+
+[node name="InteractionUi" parent="CanvasLayer" instance=ExtResource("5_igf8n")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -1)
+navigation_polygon = SubResource("NavigationPolygon_qniex")
+
+[node name="Room" type="Sprite2D" parent="."]
+texture = ExtResource("5_pbgtp")
+
+[node name="MalePlayer" parent="." instance=ExtResource("6_bxmv0")]
+position = Vector2(-16, 46)
+
+[node name="Npc" parent="." instance=ExtResource("7_56ua5")]
+position = Vector2(93, 26)
+is_interactable = true
+
+[node name="Item" parent="." instance=ExtResource("8_i382x")]
+position = Vector2(-55, 11)
+scale = Vector2(0.445, 0.445)
+id = "action_figure2"
+item_name = "Action Figure2"
+texture = ExtResource("9_0uc7y")
+description = "Literally me2"
+is_collectible = true
+
+[connection signal="triggered_character_switch" from="CanvasLayer/InteractionUi" to="Managers/GameManager" method="switch_character"]

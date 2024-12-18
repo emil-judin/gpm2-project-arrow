@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dytp3kqr7x2v8"]
+
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_u615f"]
+[ext_resource type="Texture2D" uid="uid://b2pn1ybtkhfkc" path="res://Sprites/Male_Side.png" id="2_rk8ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85di0"]
+size = Vector2(16, 40)
+
+[node name="Npc" type="Node2D" groups=["interactions"]]
+modulate = Color(0.174661, 0.672272, 0.707651, 1)
+script = ExtResource("1_u615f")
+is_interactable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_rk8ao")
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_85di0")
