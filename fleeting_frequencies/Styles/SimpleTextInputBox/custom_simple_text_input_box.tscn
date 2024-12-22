@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlmbs8m0pbpac"]
 
-[ext_resource type="Script" path="res://Styles/SimpleTextInputBox/text_input_layer.gd" id="1_7ahrn"]
+[ext_resource type="Script" path="res://styles/SimpleTextInputBox/text_input_layer.gd" id="1_7ahrn"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/TextInput/node_text_input.gd" id="1_mxdep"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dpjm"]

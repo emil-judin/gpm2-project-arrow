@@ -11,9 +11,6 @@ class_name Item
 @export var is_collectible: bool = false
 @export var is_droppable: bool = false
 
-func _ready():
-	add_to_group("items")
-
 func get_texture():
 	return _sprite.texture
 

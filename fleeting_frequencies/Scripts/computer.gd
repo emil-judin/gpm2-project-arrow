@@ -1,15 +1,15 @@
 extends Interaction
 class_name Computer
 
-@export var computer_screen: Control
+#@export var computer_screen: Control
 @onready var _area: Area2D = $Area2D
 @onready var shape: CollisionShape2D = $Area2D/CollisionShape2D
 
 func enable_computer():
 	shape.disabled = false
 
-func handle_interaction():
-	computer_screen.visible = true
+#func handle_interaction():
+	#computer_screen.visible = true
 
 func is_position_on_interaction(position):
 	var space_state = get_world_2d().direct_space_state

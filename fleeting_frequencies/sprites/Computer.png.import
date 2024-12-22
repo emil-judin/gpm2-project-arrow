@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drsetc2c28ytn"
-path="res://.godot/imported/Pitch_Deck.png-9585bd07387112dda1d65753cecbe44d.ctex"
+uid="uid://e0mtlx6ed171"
+path="res://.godot/imported/Computer.png-dc86ed99bdd82f974d296db5a4c659a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Pitch_Deck.png"
-dest_files=["res://.godot/imported/Pitch_Deck.png-9585bd07387112dda1d65753cecbe44d.ctex"]
+source_file="res://sprites/Computer.png"
+dest_files=["res://.godot/imported/Computer.png-dc86ed99bdd82f974d296db5a4c659a1.ctex"]
 
 [params]
 

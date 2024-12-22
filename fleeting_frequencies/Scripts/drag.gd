@@ -1,9 +1,13 @@
 extends TextureRect
 
+@export var enabled = false
 var mouse_in = false
 var dragging = false
 
 func _process(delta):
+	if !enabled:
+		false
+	
 	if (mouse_in && Input.is_action_pressed("primary_click")):
 		dragging = true
 	if (dragging && Input.is_action_pressed("primary_click")):
@@ -15,7 +19,6 @@ func _process(delta):
 		dragging = false
 
 func mouse_entered_texture():
-	print("entered")
 	mouse_in = true
 	
 func mouse_exited_texture():

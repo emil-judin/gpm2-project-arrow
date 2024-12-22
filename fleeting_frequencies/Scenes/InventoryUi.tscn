@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://clnuxrer137nq"]
 
-[ext_resource type="Script" path="res://Scripts/inventory_ui.gd" id="1_5k5j0"]
-[ext_resource type="Script" path="res://Scripts/drag.gd" id="2_d1dfr"]
+[ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="1_5k5j0"]
+[ext_resource type="Script" path="res://scripts/drag.gd" id="2_d1dfr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48dov"]
 bg_color = Color(0.340339, 0.340339, 0.340339, 1)
@@ -199,5 +199,3 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="gui_input" from="PrimaryInventory/Item1/ItemIcon1" to="." method="clicked_item_panel" binds= [0]]
-[connection signal="mouse_entered" from="PrimaryInventory/Item1/ItemIcon1" to="PrimaryInventory/Item1/ItemIcon1" method="mouse_entered_texture"]
-[connection signal="mouse_exited" from="PrimaryInventory/Item1/ItemIcon1" to="PrimaryInventory/Item1/ItemIcon1" method="mouse_exited_texture"]

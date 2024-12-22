@@ -50,4 +50,5 @@ func _on_inventory_updated():
 	inventory_ui.update_inventory_ui()
 
 func switch_character():
+	item_manager.save_items()
 	GameState.switch_character(get_tree().current_scene.scene_file_path)

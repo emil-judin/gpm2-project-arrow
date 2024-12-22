@@ -1,61 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://bv810eum4yasy"]
+[gd_scene load_steps=11 format=3 uid="uid://bv810eum4yasy"]
 
-[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://Scenes/GameManager.tscn" id="1_coq8o"]
-[ext_resource type="Texture2D" uid="uid://heol5seu4628" path="res://Sprites/Room.png" id="1_nubpr"]
-[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/ItemManager.tscn" id="2_awipm"]
-[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/InteractionManager.tscn" id="3_1jssl"]
-[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/InventoryUi.tscn" id="4_88ucq"]
-[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/InteractionUi.tscn" id="5_igf8n"]
-[ext_resource type="PackedScene" uid="uid://badqnpulvi0ps" path="res://Scenes/ComputerScreen.tscn" id="6_6n4al"]
-[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/MalePlayer.tscn" id="6_bxmv0"]
-[ext_resource type="PackedScene" uid="uid://dnn5ekaaxpriy" path="res://Scenes/Items/Item.tscn" id="8_i382x"]
-[ext_resource type="Texture2D" uid="uid://dvldpldmg83jb" path="res://Sprites/Mouse.png" id="10_e4v8p"]
-[ext_resource type="PackedScene" uid="uid://4yve2v762c7c" path="res://Scenes/Computer.tscn" id="11_v8ni4"]
-[ext_resource type="Texture2D" uid="uid://e0mtlx6ed171" path="res://Sprites/Ebene_11.png" id="13_it0r6"]
-[ext_resource type="Script" path="res://Scripts/mousemanager.gd" id="14_65dmr"]
-
-[sub_resource type="Gradient" id="Gradient_vw8wi"]
-offsets = PackedFloat32Array(0, 0.681293)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_be1hf"]
-gradient = SubResource("Gradient_vw8wi")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_qniex"]
-vertices = PackedVector2Array(160, 47, -160, 47, -160, 46, 160, 46)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-160, 46, -160, 47, 160, 47, 160, 46)])
-agent_radius = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u10q4"]
-size = Vector2(15.5, 20)
+[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://scenes/GameManager.tscn" id="1_coq8o"]
+[ext_resource type="Texture2D" uid="uid://heol5seu4628" path="res://sprites/Room.png" id="1_nubpr"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://scenes/ItemManager.tscn" id="2_awipm"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://scenes/InteractionManager.tscn" id="3_1jssl"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://scenes/InventoryUi.tscn" id="4_88ucq"]
+[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://scenes/InteractionUi.tscn" id="5_igf8n"]
+[ext_resource type="PackedScene" uid="uid://badqnpulvi0ps" path="res://scenes/ComputerScreen.tscn" id="6_6n4al"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://scenes/MalePlayer.tscn" id="6_bxmv0"]
+[ext_resource type="PackedScene" uid="uid://drgq5uwjdwnmt" path="res://scenes/HideSpot.tscn" id="11_33vy8"]
+[ext_resource type="PackedScene" uid="uid://4yve2v762c7c" path="res://scenes/environment/Computer.tscn" id="11_v8ni4"]
 
 [node name="TestRoom" type="Node2D"]
 position = Vector2(160, 90)
-
-[node name="Room" type="Sprite2D" parent="."]
-texture = ExtResource("1_nubpr")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-84, 5)
-color = Color(0.027451, 0.345098, 0.654902, 1)
-energy = 1.25
-texture = SubResource("GradientTexture2D_be1hf")
-
-[node name="Managers" type="Node" parent="."]
-
-[node name="GameManager" parent="Managers" node_paths=PackedStringArray("player", "item_manager", "interaction_manager", "interaction_ui", "computer_screen") instance=ExtResource("1_coq8o")]
-player = NodePath("../../MalePlayer")
-item_manager = NodePath("../ItemManager")
-interaction_manager = NodePath("../InteractionManager")
-interaction_ui = NodePath("../../CanvasLayer/InteractionUi")
-computer_screen = NodePath("../../CanvasLayer/ScreenDesktop")
-
-[node name="ItemManager" parent="Managers" instance=ExtResource("2_awipm")]
-
-[node name="InteractionManager" parent="Managers" instance=ExtResource("3_1jssl")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -66,51 +23,42 @@ visible = false
 
 [node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("4_88ucq")]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(0, -1)
-navigation_polygon = SubResource("NavigationPolygon_qniex")
+[node name="Managers" type="Node" parent="."]
+
+[node name="GameManager" parent="Managers" node_paths=PackedStringArray("player", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui", "computer_screen") instance=ExtResource("1_coq8o")]
+player = NodePath("../../MalePlayer")
+item_manager = NodePath("../ItemManager")
+interaction_manager = NodePath("../InteractionManager")
+inventory_ui = NodePath("../../CanvasLayer/InventoryUi")
+interaction_ui = NodePath("../../CanvasLayer/InteractionUi")
+computer_screen = NodePath("../../CanvasLayer/ScreenDesktop")
+
+[node name="ItemManager" parent="Managers" node_paths=PackedStringArray("items_parent") instance=ExtResource("2_awipm")]
+items_parent = NodePath("../../Items")
+
+[node name="InteractionManager" parent="Managers" instance=ExtResource("3_1jssl")]
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Room" type="Sprite2D" parent="."]
+texture = ExtResource("1_nubpr")
 
 [node name="MalePlayer" parent="." instance=ExtResource("6_bxmv0")]
 position = Vector2(-16, 46)
 
-[node name="Item" parent="." instance=ExtResource("8_i382x")]
-visible = false
-position = Vector2(-128, 45)
-id = "action_figure2"
-item_name = "Action Figure2"
-description = "Literally me2"
-is_collectible = true
-
-[node name="Computer" parent="." node_paths=PackedStringArray("computer_screen") instance=ExtResource("11_v8ni4")]
-visible = false
-position = Vector2(-84, 5)
-computer_screen = NodePath("../CanvasLayer/ScreenDesktop")
+[node name="Computer" parent="." instance=ExtResource("11_v8ni4")]
+position = Vector2(-80, 8)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.286853, 0.677329, 0.530953, 1)
 energy = 0.6
 blend_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-84, 9)
-texture = ExtResource("13_it0r6")
-
-[node name="mousemanager" type="Node2D" parent="." node_paths=PackedStringArray("mouseitem", "pc_area", "spawned_mouse")]
-script = ExtResource("14_65dmr")
-mouseitem = NodePath("../Item")
-pc_area = NodePath("../Computer")
-spawned_mouse = NodePath("../spawned mouse")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-63.75, 10)
-shape = SubResource("RectangleShape2D_u10q4")
-
-[node name="spawned mouse" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-67, 19)
-texture = ExtResource("10_e4v8p")
+[node name="HideSpot" parent="." instance=ExtResource("11_33vy8")]
+position = Vector2(-128, 43)
+scale = Vector2(1.2, 0.3)
+id = "room_under_wardrobe"
+connected_scene_paths = Array[String](["res://scenes/FemaleTestRoom.tscn", "res://scenes/MaleTestRoom.tscn"])
 
 [connection signal="triggered_character_switch" from="CanvasLayer/InteractionUi" to="Managers/GameManager" method="switch_character"]
-[connection signal="input_event" from="Area2D" to="mousemanager" method="clicked"]
+[connection signal="clicked_drop_item" from="CanvasLayer/InventoryUi" to="Managers/GameManager" method="initiate_drop_item"]

@@ -40,5 +40,6 @@ func reset_inventory_ui():
 
 func clicked_item_panel(event: InputEvent, index: int):
 	if event.is_action_pressed("secondary_click"):
+		print("i")
 		if index < GameState.primary_inventory.size() && GameState.primary_inventory[index]:
 			clicked_drop_item.emit(GameState.primary_inventory[index])

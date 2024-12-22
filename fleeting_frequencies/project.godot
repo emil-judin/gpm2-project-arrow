@@ -11,22 +11,22 @@ config_version=5
 [application]
 
 config/name="Project Arrow"
-run/main_scene="res://Scenes/MainMenu.tscn"
+run/main_scene="res://scenes/MaleTestRoom.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-GameState="*res://Scripts/game_state.gd"
+GameState="*res://scripts/game_state.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"test_character": "res://Dialogic/Characters/test_character.dch"
+"test_character": "res://dialogic/characters/test_character.dch"
 }
 directories/dtl_directory={
-"test_timeline": "res://Dialogic/Timelines/test_timeline.dtl"
+"test_timeline": "res://dialogic/timelines/test_timeline.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://4yve2v762c7c"]
+
+[ext_resource type="Script" path="res://scripts/computer.gd" id="1_l0i1l"]
+[ext_resource type="Texture2D" uid="uid://e0mtlx6ed171" path="res://sprites/Computer.png" id="2_lmym4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_incss"]
+size = Vector2(14, 10)
+
+[sub_resource type="Gradient" id="Gradient_vw8wi"]
+offsets = PackedFloat32Array(0, 0.681293)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fy61a"]
+gradient = SubResource("Gradient_vw8wi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Computer" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_l0i1l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lmym4")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_incss")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -3)
+color = Color(0.027451, 0.345098, 0.654902, 1)
+energy = 1.25
+texture = SubResource("GradientTexture2D_fy61a")

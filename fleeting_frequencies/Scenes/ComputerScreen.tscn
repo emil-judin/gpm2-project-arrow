@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://badqnpulvi0ps"]
 
-[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="1_bfkns"]
-[ext_resource type="Script" path="res://Scripts/computer_screen.gd" id="1_oq1sc"]
-[ext_resource type="FontFile" uid="uid://b4xrh1ay3n4gb" path="res://Fonts/Minecraftia-Regular.ttf" id="1_smbvn"]
-[ext_resource type="Texture2D" uid="uid://dj5g2fbbqscpd" path="res://Sprites/file.png" id="2_28pkm"]
-[ext_resource type="Texture2D" uid="uid://dud5oymms7hbb" path="res://Sprites/arrow.png" id="2_vw504"]
+[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="1_bfkns"]
+[ext_resource type="Script" path="res://scripts/computer_screen.gd" id="1_oq1sc"]
+[ext_resource type="FontFile" uid="uid://b4xrh1ay3n4gb" path="res://fonts/Minecraftia-Regular.ttf" id="1_smbvn"]
+[ext_resource type="Texture2D" uid="uid://dj5g2fbbqscpd" path="res://sprites/File.png" id="2_28pkm"]
+[ext_resource type="Texture2D" uid="uid://dud5oymms7hbb" path="res://sprites/arrow.png" id="2_vw504"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6ku7"]
 bg_color = Color(0, 0.333333, 0.666667, 1)

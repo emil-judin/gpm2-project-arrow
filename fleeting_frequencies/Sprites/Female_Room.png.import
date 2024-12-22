@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mthi4107o48c"
-path="res://.godot/imported/Female_Room.png-dc7be1ac4fdce08772ede5fd06a00fb9.ctex"
+path="res://.godot/imported/Female_Room.png-89f51641ed054991867244e8aec682de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Female_Room.png"
-dest_files=["res://.godot/imported/Female_Room.png-dc7be1ac4fdce08772ede5fd06a00fb9.ctex"]
+source_file="res://sprites/Female_Room.png"
+dest_files=["res://.godot/imported/Female_Room.png-89f51641ed054991867244e8aec682de.ctex"]
 
 [params]
 
