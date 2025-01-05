@@ -3,6 +3,7 @@ class_name ItemManager
 
 signal inventory_updated()
 
+@export var item_scene: PackedScene
 @export var items_parent: Node
 
 func _ready():
@@ -34,19 +35,11 @@ func initialize_items():
 
 func get_items_in_current_scene():
 	var current_scene_path = get_tree().current_scene.scene_file_path
-	var a = GameState.scene_to_items
 	return GameState.scene_to_items.get(current_scene_path)
 
 func set_items_in_current_scene(items: Array[Item]):
 	var current_scene_path = get_tree().current_scene.scene_file_path
 	GameState.scene_to_items[current_scene_path] = items
-
-func add_item_to_current_scene(item: Item):
-	var current_scene_path = get_tree().current_scene.scene_file_path
-	GameState.remove_item_from_primary_inventory(item)
-	GameState.primary_collected_item_ids.erase(item.id)
-	GameState.add_item_to_scene(item, current_scene_path)
-	items_parent.add_child(item)
 
 func get_item_at_position(position):
 	var items_in_scene = get_items_in_current_scene()
@@ -65,15 +58,16 @@ func handle_drop(item: Item, position: Vector2):
 
 func collect_item(item: Item):
 	print("Adding item: %s" % item.item_name)
-	GameState.add_item_to_primary_inventory(item)
-	GameState.remove_item_from_scenes(item)
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	GameState.collect_item(item, current_scene_path)
 	item.get_parent().remove_child(item)
 	inventory_updated.emit()
 	
 func drop_item(item: Item, position: Vector2):
-	# TODO: selection with green and red selector
 	print("Dropping item: %s" % item.item_name)
-	add_item_to_current_scene(item)
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	GameState.drop_item(item, current_scene_path)
+	items_parent.add_child(item)
 	item.global_position = position
 	inventory_updated.emit()
 	

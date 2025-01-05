@@ -1,7 +1,7 @@
 extends Node
 class_name InventoryUi
 
-signal clicked_drop_item(item: Item)
+signal dropped_item(item: Item, drop_position: Vector2)
 
 @onready var primary_inventory_parent: Node = $PrimaryInventory
 @onready var secondary_inventory_parent: Node = $SecondaryInventory
@@ -21,9 +21,9 @@ func update_inventory_ui():
 	
 	for i in primary_inventory_icons.size() - 1:
 		if i < GameState.primary_inventory.size() && GameState.primary_inventory[i] != null:
-			primary_inventory_icons[i].texture = GameState.primary_inventory[i].get_texture()
+			primary_inventory_icons[i].set_icon_texture(GameState.primary_inventory[i].get_texture())
 		else:
-			primary_inventory_icons[i].texture = null
+			primary_inventory_icons[i].set_icon_texture(null)
 		
 	for i in secondary_inventory_icons.size() - 1:
 		if i < GameState.secondary_inventory.size() && GameState.secondary_inventory[i] != null:
@@ -33,13 +33,10 @@ func update_inventory_ui():
 
 func reset_inventory_ui():
 	for i in GameState.primary_inventory.size() - 1:
-		primary_inventory_icons[i].texture = null
+		primary_inventory_icons[i].set_icon_texture(null)
 		
 	for i in GameState.secondary_inventory.size() - 1:
 		secondary_inventory_icons[i].texture = null
 
-func clicked_item_panel(event: InputEvent, index: int):
-	if event.is_action_pressed("secondary_click"):
-		print("i")
-		if index < GameState.primary_inventory.size() && GameState.primary_inventory[index]:
-			clicked_drop_item.emit(GameState.primary_inventory[index])
+func drag_and_dropped_item(index: int, drop_position: Vector2):
+	dropped_item.emit(GameState.primary_inventory[index], drop_position)

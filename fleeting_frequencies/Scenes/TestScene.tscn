@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://c6v1jboam2e3k"]
 
-[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://scenes/GameManager.tscn" id="1_oygh0"]
-[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://scenes/InventoryUi.tscn" id="1_ul4j0"]
+[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://Scenes/GameManager.tscn" id="1_oygh0"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/InventoryUi.tscn" id="1_ul4j0"]
 [ext_resource type="Texture2D" uid="uid://b31nu4llskxd6" path="res://icon.svg" id="1_xa6vc"]
-[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://scenes/ItemManager.tscn" id="2_5gk5y"]
-[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://scenes/MalePlayer.tscn" id="2_jtx6l"]
-[ext_resource type="PackedScene" uid="uid://dnn5ekaaxpriy" path="res://scenes/environment/Item.tscn" id="3_5188i"]
-[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://scenes/InteractionManager.tscn" id="3_qo4hm"]
-[ext_resource type="PackedScene" uid="uid://dytp3kqr7x2v8" path="res://scenes/Npc.tscn" id="8_2w4q8"]
-[ext_resource type="PackedScene" uid="uid://c7nmpsspohoew" path="res://scenes/Door.tscn" id="9_pm0rm"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/ItemManager.tscn" id="2_5gk5y"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/MalePlayer.tscn" id="2_jtx6l"]
+[ext_resource type="PackedScene" uid="uid://dnn5ekaaxpriy" path="res://Scenes/Environment/Item.tscn" id="3_5188i"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/InteractionManager.tscn" id="3_qo4hm"]
+[ext_resource type="PackedScene" uid="uid://dytp3kqr7x2v8" path="res://Scenes/Npc.tscn" id="8_2w4q8"]
+[ext_resource type="PackedScene" uid="uid://c7nmpsspohoew" path="res://Scenes/Door.tscn" id="9_pm0rm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bbl7n"]
 vertices = PackedVector2Array(48.8516, 47.8125, 0.539063, 49.0469, -46.6875, 49.0469, -51.1719, 43.3203, -52.0938, -27.1484, -51.6328, -47.1328, -40.2891, -49.3281, -6.82813, -47.7188, 50.9609, 46.1875, 23.2031, -48.3906, 29.7266, -48.3906, 40.3984, -48.0781, 45.4766, -46.8906, 50.8125, -44.5703)

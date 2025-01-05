@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://jpgcny5uwh53"]
+[gd_scene load_steps=15 format=3 uid="uid://jpgcny5uwh53"]
 
-[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://scenes/GameManager.tscn" id="1_l7mtg"]
-[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://scenes/ItemManager.tscn" id="2_axbq1"]
-[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://scenes/InteractionManager.tscn" id="3_v7lko"]
-[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://scenes/InventoryUi.tscn" id="4_o4iso"]
-[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://scenes/InteractionUi.tscn" id="5_c3e8e"]
-[ext_resource type="Texture2D" uid="uid://bcgwuybeeitpj" path="res://sprites/Room 1.png" id="6_lpasa"]
-[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://scenes/MalePlayer.tscn" id="6_uky51"]
-[ext_resource type="PackedScene" uid="uid://dytp3kqr7x2v8" path="res://scenes/Npc.tscn" id="7_sfn0l"]
-[ext_resource type="PackedScene" uid="uid://b06goj2x6qcjf" path="res://scenes/FemalePlayer.tscn" id="10_l2ryv"]
-[ext_resource type="PackedScene" uid="uid://drgq5uwjdwnmt" path="res://scenes/HideSpot.tscn" id="11_wtc6k"]
-[ext_resource type="PackedScene" uid="uid://cts0h8sbw20sh" path="res://scenes/environment/Mouse.tscn" id="12_6ovu3"]
+[ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://Scenes/GameManager.tscn" id="1_l7mtg"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/ItemManager.tscn" id="2_axbq1"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/InteractionManager.tscn" id="3_v7lko"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/InventoryUi.tscn" id="4_o4iso"]
+[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/InteractionUi.tscn" id="5_c3e8e"]
+[ext_resource type="Texture2D" uid="uid://bcgwuybeeitpj" path="res://Sprites/Room 1.png" id="6_lpasa"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/MalePlayer.tscn" id="6_uky51"]
+[ext_resource type="PackedScene" uid="uid://dytp3kqr7x2v8" path="res://Scenes/Npc.tscn" id="7_sfn0l"]
+[ext_resource type="PackedScene" uid="uid://b06goj2x6qcjf" path="res://Scenes/FemalePlayer.tscn" id="10_l2ryv"]
+[ext_resource type="PackedScene" uid="uid://drgq5uwjdwnmt" path="res://Scenes/HideSpot.tscn" id="11_wtc6k"]
+[ext_resource type="PackedScene" uid="uid://cts0h8sbw20sh" path="res://Scenes/Environment/Mouse.tscn" id="12_6ovu3"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/ItemSpot.tscn" id="13_sqxej"]
 
 [sub_resource type="Gradient" id="Gradient_cgcmq"]
 offsets = PackedFloat32Array(0, 0.681293)
@@ -49,6 +50,20 @@ items_parent = NodePath("../../Items")
 [node name="Mouse" parent="Items" instance=ExtResource("12_6ovu3")]
 position = Vector2(207, 121)
 
+[node name="HideSpots" type="Node" parent="."]
+
+[node name="HideSpot" parent="HideSpots" instance=ExtResource("11_wtc6k")]
+position = Vector2(32, 133)
+scale = Vector2(1.2, 0.3)
+id = "room_under_wardrobe"
+connected_scene_paths = Array[String](["res://Scenes/MaleTestRoom.tscn"])
+
+[node name="HideSpot3" parent="HideSpots" instance=ExtResource("11_wtc6k")]
+position = Vector2(213, 133)
+scale = Vector2(3.12, 0.3)
+id = "room_under_wardrobe"
+connected_scene_paths = Array[String](["res://Scenes/MaleTestRoom.tscn"])
+
 [node name="Room" type="Sprite2D" parent="."]
 texture = ExtResource("6_lpasa")
 
@@ -73,11 +88,15 @@ blend_mode = 1
 [node name="Npc" parent="." instance=ExtResource("7_sfn0l")]
 position = Vector2(93, 26)
 
-[node name="HideSpot" parent="." instance=ExtResource("11_wtc6k")]
-position = Vector2(-128, 43)
-scale = Vector2(1.2, 0.3)
-id = "room_under_wardrobe"
-connected_scene_paths = Array[String](["res://scenes/FemaleTestRoom.tscn", "res://scenes/MaleTestRoom.tscn"])
+[node name="ItemSpot" parent="." instance=ExtResource("13_sqxej")]
+position = Vector2(48, 31)
+
+[node name="ItemSpot2" parent="." instance=ExtResource("13_sqxej")]
+position = Vector2(-127, 46)
+
+[node name="ItemSpot3" parent="." instance=ExtResource("13_sqxej")]
+position = Vector2(48, 46)
+scale = Vector2(5.04, 1)
 
 [connection signal="triggered_character_switch" from="CanvasLayer/InteractionUi" to="Managers/GameManager" method="switch_character"]
-[connection signal="clicked_drop_item" from="CanvasLayer/InventoryUi" to="Managers/GameManager" method="initiate_drop_item"]
+[connection signal="dropped_item" from="CanvasLayer/InventoryUi" to="Managers/GameManager" method="initiate_drop_item"]

@@ -9,6 +9,7 @@ extends Node
 @export var computer_screen: Control
 var current_interaction_target: Interaction = null
 var dropping_item = false
+var drop_position: Vector2
 
 func _ready():
 	player.target_reached.connect(_on_target_reached)
@@ -35,17 +36,18 @@ func _on_target_reached():
 		if !dropping_item:
 			item_manager.handle_pick_up(item)
 		else:
-			item_manager.handle_drop(item, player.global_position)
+			item_manager.handle_drop(item, drop_position)
 			dropping_item = false
 	elif current_interaction_target is Interaction:
 		var npc = current_interaction_target as Interaction
 		interaction_manager.handle_interaction(npc)
 
-func initiate_drop_item(item: Item):
+func initiate_drop_item(item: Item, drop_position: Vector2):
 	current_interaction_target = item
 	dropping_item = true
-	player.set_navigation_target(player.global_position)
-	
+	self.drop_position = drop_position
+	player.set_navigation_target(drop_position)
+
 func _on_inventory_updated():
 	inventory_ui.update_inventory_ui()
 

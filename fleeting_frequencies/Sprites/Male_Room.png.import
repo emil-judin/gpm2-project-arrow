@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgo2swxp5eon3"
-path="res://.godot/imported/Male_Room.png-2e107efeb7ff52af6bafc06e978d9b9c.ctex"
+path="res://.godot/imported/Male_Room.png-fd53de73b3e7283ce5a8c418be74117f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Male_Room.png"
-dest_files=["res://.godot/imported/Male_Room.png-2e107efeb7ff52af6bafc06e978d9b9c.ctex"]
+source_file="res://Sprites/Male_Room.png"
+dest_files=["res://.godot/imported/Male_Room.png-fd53de73b3e7283ce5a8c418be74117f.ctex"]
 
 [params]
 

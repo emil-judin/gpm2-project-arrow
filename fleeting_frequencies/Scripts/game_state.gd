@@ -13,9 +13,6 @@ var primary_inventory: Array[Item] = []
 var secondary_inventory: Array[Item] = []
 var primary_collected_item_ids: Dictionary = {}
 var secondary_collected_item_ids: Dictionary = {}
-# TODO: should i remove this and only work with scene_to_items?
-# key: String, value: Array[Item]
-var hide_spot_id_to_items: Dictionary = {}
 # key: scene path, value: Array[Item]
 var scene_to_items: Dictionary = {}
 
@@ -59,17 +56,6 @@ func remove_item_from_primary_inventory(item: Item):
 func has_collected_in_primary_inventory(item: Item):
 	return primary_collected_item_ids.has(item.id) && primary_collected_item_ids[item.id] == true
 
-# TODO: fix or remove
-#func add_item_to_hide_spot(item: Item, hide_spot_id: String):
-	#var items = hide_spot_id_to_items[hide_spot_id] as Array[Item]
-	#var new_items
-	#if items == null or items.size() == 0:
-		#new_items = [item]
-	#else:
-		#items.append(item)
-	#
-	#hide_spot_id_to_items[hide_spot_id] = new_items
-
 func add_item_to_scene(item: Item, scene_path: String):
 	var items = scene_to_items.get(scene_path)
 	if items == null:
@@ -77,11 +63,42 @@ func add_item_to_scene(item: Item, scene_path: String):
 	else:
 		if !items.has(item):
 			items.append(item)
-	var a = scene_to_items
-	var b = "abc"
 
 func remove_item_from_scenes(item: Item):
 	for i in scene_to_items.values():
-		if i != null:
-			var item_array = i as Array[Item]
-			item_array.erase(item)
+		var items = i as Array[Item]
+		items.erase(item)
+
+func remove_item_from_scene(item: Item, scene_path: String):
+	var items = scene_to_items.get(scene_path)
+	if items != null:
+		items.erase(item)
+
+func set_item_uncollectable(item: Item):
+	for item_array in scene_to_items.values():
+		var items = item_array as Array[Item]
+		for i in items:
+			if i == item:
+				i.is_collectible = false
+
+func replace_item_with_mock(item: Item):
+	for item_array in scene_to_items.values():
+		var items = item_array as Array[Item]
+		for i in items.size():
+			if items[i] == item:
+				var new_mock_item = item.duplicate(DuplicateFlags.DUPLICATE_USE_INSTANTIATION) as Item
+				new_mock_item.set_mock()
+				items[i] = new_mock_item
+
+func collect_item(item: Item, scene_path: String):
+	add_item_to_primary_inventory(item)
+	if current_character == CharacterType.MALE:
+		remove_item_from_scene(item, scene_path)
+		replace_item_with_mock(item)
+	else:
+		remove_item_from_scenes(item)
+
+func drop_item(item: Item, scene_path: String):
+	remove_item_from_primary_inventory(item)
+	add_item_to_scene(item, scene_path)
+	primary_collected_item_ids.erase(item.id)

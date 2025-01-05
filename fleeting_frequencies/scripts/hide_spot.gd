@@ -6,8 +6,10 @@ class_name HideSpot
 
 func _area_entered(area: Area2D):
 	if area.get_parent().is_in_group("items"):
-		var current_scene_path = get_tree().current_scene.scene_file_path
 		var item = area.get_parent() as Item
+		if !item.is_collectible:
+			# if item is not collectible, don't transfer it to other scenes
+			return
 		
 		for scene_path in connected_scene_paths:
 			print("saving to " + scene_path)

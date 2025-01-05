@@ -11,6 +11,11 @@ class_name Item
 @export var is_collectible: bool = false
 @export var is_droppable: bool = false
 
+func set_mock():
+	id = "mock_" + id
+	is_collectible = false
+	is_droppable = false
+
 func get_texture():
 	return _sprite.texture
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://b06goj2x6qcjf"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_eau6m"]
-[ext_resource type="Texture2D" uid="uid://d0dbkdgkhhd5o" path="res://sprites/Idle.png" id="2_o6ohx"]
-[ext_resource type="Texture2D" uid="uid://dk1rt4xqqfgtm" path="res://sprites/Walk.png" id="3_oivxn"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_eau6m"]
+[ext_resource type="Texture2D" uid="uid://d0dbkdgkhhd5o" path="res://Sprites/Idle.png" id="2_o6ohx"]
+[ext_resource type="Texture2D" uid="uid://dk1rt4xqqfgtm" path="res://Sprites/Walk.png" id="3_oivxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmtv1"]
-size = Vector2(16, 37)
+size = Vector2(17, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08xcf"]
 atlas = ExtResource("2_o6ohx")
@@ -72,14 +72,16 @@ position = Vector2(0, -19)
 [node name="Area2D" type="Area2D" parent="Container"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Area2D"]
-position = Vector2(0, 0.5)
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_mmtv1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container"]
+position = Vector2(-9, -19)
 sprite_frames = SubResource("SpriteFrames_nqpp1")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.536968
+centered = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0
