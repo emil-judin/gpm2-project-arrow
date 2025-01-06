@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/ItemSpot.tscn" id="10_l4f6t"]
 [ext_resource type="PackedScene" uid="uid://4yve2v762c7c" path="res://Scenes/Environment/Computer.tscn" id="11_v8ni4"]
 
-[node name="TestRoom" type="Node2D"]
+[node name="MaleTestRoom" type="Node2D"]
 position = Vector2(160, 90)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

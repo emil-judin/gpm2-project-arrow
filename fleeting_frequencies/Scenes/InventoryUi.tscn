@@ -1,12 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://clnuxrer137nq"]
+[gd_scene load_steps=5 format=3 uid="uid://clnuxrer137nq"]
 
 [ext_resource type="Script" path="res://Scripts/inventory_ui.gd" id="1_5k5j0"]
-[ext_resource type="Script" path="res://Scripts/drag.gd" id="2_d1dfr"]
+[ext_resource type="PackedScene" uid="uid://docu6t1kotx4w" path="res://Scenes/ItemIcon.tscn" id="2_61wvi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r867a"]
 bg_color = Color(0.341176, 0.341176, 0.341176, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a08b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48dov"]
 bg_color = Color(0.340339, 0.340339, 0.340339, 1)
@@ -43,18 +41,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r867a")
 [node name="CenterContainer" type="CenterContainer" parent="PrimaryInventory/Item1"]
 layout_mode = 2
 
-[node name="ItemIcon1" type="TextureRect" parent="PrimaryInventory/Item1/CenterContainer"]
+[node name="ItemIcon1" parent="PrimaryInventory/Item1/CenterContainer" instance=ExtResource("2_61wvi")]
 layout_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 2
-stretch_mode = 2
-script = ExtResource("2_d1dfr")
-drag_color_invalid = Color(0.84, 0.056, 0, 0.737255)
-
-[node name="Area2D" type="Area2D" parent="PrimaryInventory/Item1/CenterContainer/ItemIcon1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryInventory/Item1/CenterContainer/ItemIcon1/Area2D"]
-shape = SubResource("RectangleShape2D_4a08b")
 
 [node name="Item2" type="PanelContainer" parent="PrimaryInventory"]
 custom_minimum_size = Vector2(20, 20)
@@ -64,16 +52,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_48dov")
 [node name="CenterContainer" type="CenterContainer" parent="PrimaryInventory/Item2"]
 layout_mode = 2
 
-[node name="ItemIcon2" type="TextureRect" parent="PrimaryInventory/Item2/CenterContainer"]
+[node name="ItemIcon2" parent="PrimaryInventory/Item2/CenterContainer" instance=ExtResource("2_61wvi")]
 layout_mode = 2
-script = ExtResource("2_d1dfr")
 item_position = 1
-
-[node name="Area2D" type="Area2D" parent="PrimaryInventory/Item2/CenterContainer/ItemIcon2"]
-position = Vector2(-24, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryInventory/Item2/CenterContainer/ItemIcon2/Area2D"]
-shape = SubResource("RectangleShape2D_4a08b")
 
 [node name="Item3" type="PanelContainer" parent="PrimaryInventory"]
 custom_minimum_size = Vector2(20, 20)
@@ -83,16 +64,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_48dov")
 [node name="CenterContainer" type="CenterContainer" parent="PrimaryInventory/Item3"]
 layout_mode = 2
 
-[node name="ItemIcon3" type="TextureRect" parent="PrimaryInventory/Item3/CenterContainer"]
+[node name="ItemIcon3" parent="PrimaryInventory/Item3/CenterContainer" instance=ExtResource("2_61wvi")]
 layout_mode = 2
-script = ExtResource("2_d1dfr")
 item_position = 2
-
-[node name="Area2D" type="Area2D" parent="PrimaryInventory/Item3/CenterContainer/ItemIcon3"]
-position = Vector2(-48, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryInventory/Item3/CenterContainer/ItemIcon3/Area2D"]
-shape = SubResource("RectangleShape2D_4a08b")
 
 [node name="Item4" type="PanelContainer" parent="PrimaryInventory"]
 custom_minimum_size = Vector2(20, 20)
@@ -102,16 +76,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_48dov")
 [node name="CenterContainer" type="CenterContainer" parent="PrimaryInventory/Item4"]
 layout_mode = 2
 
-[node name="ItemIcon4" type="TextureRect" parent="PrimaryInventory/Item4/CenterContainer"]
+[node name="ItemIcon4" parent="PrimaryInventory/Item4/CenterContainer" instance=ExtResource("2_61wvi")]
 layout_mode = 2
-script = ExtResource("2_d1dfr")
 item_position = 3
-
-[node name="Area2D" type="Area2D" parent="PrimaryInventory/Item4/CenterContainer/ItemIcon4"]
-position = Vector2(-72, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryInventory/Item4/CenterContainer/ItemIcon4/Area2D"]
-shape = SubResource("RectangleShape2D_4a08b")
 
 [node name="Item5" type="PanelContainer" parent="PrimaryInventory"]
 custom_minimum_size = Vector2(20, 20)
@@ -121,16 +88,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_48dov")
 [node name="CenterContainer" type="CenterContainer" parent="PrimaryInventory/Item5"]
 layout_mode = 2
 
-[node name="ItemIcon5" type="TextureRect" parent="PrimaryInventory/Item5/CenterContainer"]
+[node name="ItemIcon5" parent="PrimaryInventory/Item5/CenterContainer" instance=ExtResource("2_61wvi")]
 layout_mode = 2
-script = ExtResource("2_d1dfr")
 item_position = 4
-
-[node name="Area2D" type="Area2D" parent="PrimaryInventory/Item5/CenterContainer/ItemIcon5"]
-position = Vector2(-96, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryInventory/Item5/CenterContainer/ItemIcon5/Area2D"]
-shape = SubResource("RectangleShape2D_4a08b")
 
 [node name="SecondaryInventory" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -201,5 +161,7 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="drag_and_dropped_item_icon" from="PrimaryInventory/Item1/CenterContainer/ItemIcon1" to="." method="drag_and_dropped_item"]
-[connection signal="mouse_entered" from="PrimaryInventory/Item1/CenterContainer/ItemIcon1" to="PrimaryInventory/Item1/CenterContainer/ItemIcon1" method="mouse_entered_texture"]
-[connection signal="mouse_exited" from="PrimaryInventory/Item1/CenterContainer/ItemIcon1" to="PrimaryInventory/Item1/CenterContainer/ItemIcon1" method="mouse_exited_texture"]
+[connection signal="drag_and_dropped_item_icon" from="PrimaryInventory/Item2/CenterContainer/ItemIcon2" to="." method="drag_and_dropped_item"]
+[connection signal="drag_and_dropped_item_icon" from="PrimaryInventory/Item3/CenterContainer/ItemIcon3" to="." method="drag_and_dropped_item"]
+[connection signal="drag_and_dropped_item_icon" from="PrimaryInventory/Item4/CenterContainer/ItemIcon4" to="." method="drag_and_dropped_item"]
+[connection signal="drag_and_dropped_item_icon" from="PrimaryInventory/Item5/CenterContainer/ItemIcon5" to="." method="drag_and_dropped_item"]

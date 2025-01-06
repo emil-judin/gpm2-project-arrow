@@ -34,11 +34,11 @@ func initialize_items():
 			items_parent.add_child(item)
 
 func get_items_in_current_scene():
-	var current_scene_path = get_tree().current_scene.scene_file_path
+	var current_scene_path = GameState.current_scene_path
 	return GameState.scene_to_items.get(current_scene_path)
 
 func set_items_in_current_scene(items: Array[Item]):
-	var current_scene_path = get_tree().current_scene.scene_file_path
+	var current_scene_path = GameState.current_scene_path
 	GameState.scene_to_items[current_scene_path] = items
 
 func get_item_at_position(position):
@@ -58,14 +58,14 @@ func handle_drop(item: Item, position: Vector2):
 
 func collect_item(item: Item):
 	print("Adding item: %s" % item.item_name)
-	var current_scene_path = get_tree().current_scene.scene_file_path
+	var current_scene_path = GameState.current_scene_path
 	GameState.collect_item(item, current_scene_path)
 	item.get_parent().remove_child(item)
 	inventory_updated.emit()
 	
 func drop_item(item: Item, position: Vector2):
 	print("Dropping item: %s" % item.item_name)
-	var current_scene_path = get_tree().current_scene.scene_file_path
+	var current_scene_path = GameState.current_scene_path
 	GameState.drop_item(item, current_scene_path)
 	items_parent.add_child(item)
 	item.global_position = position

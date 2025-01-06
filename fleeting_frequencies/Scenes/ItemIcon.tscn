@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://docu6t1kotx4w"]
+
+[ext_resource type="Script" path="res://Scripts/drag.gd" id="1_xungo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a08b"]
+
+[node name="ItemIcon1" type="TextureRect"]
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+stretch_mode = 2
+script = ExtResource("1_xungo")
+drag_color_invalid = Color(0.84, 0.056, 0, 0.737255)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4a08b")
+
+[connection signal="mouse_entered" from="." to="." method="mouse_entered_texture"]
+[connection signal="mouse_exited" from="." to="." method="mouse_exited_texture"]

@@ -6,7 +6,8 @@ enum CharacterType{
 }
 
 var current_character: CharacterType = CharacterType.MALE
-var last_scene_path
+var current_scene_path: String
+var last_scene_path: String
 var last_male_scene_path: String = "res://Scenes/MaleTestRoom.tscn"
 var last_female_scene_path: String = "res://Scenes/FemaleTestRoom.tscn"
 var primary_inventory: Array[Item] = []
@@ -15,9 +16,19 @@ var primary_collected_item_ids: Dictionary = {}
 var secondary_collected_item_ids: Dictionary = {}
 # key: scene path, value: Array[Item]
 var scene_to_items: Dictionary = {}
+var is_melting_transition: bool = false
 
-func switch_character(current_scene_path):
-	last_scene_path = current_scene_path
+func _ready():
+	current_scene_path = get_tree().current_scene.scene_file_path
+
+func is_male_player_active():
+	return current_character == CharacterType.MALE
+
+func is_female_player_active():
+	return !is_male_player_active()
+
+func switch_character(from_scene_path):
+	last_scene_path = from_scene_path
 	
 	# switch inventories
 	var temp_primary_inventory = primary_inventory
@@ -29,16 +40,16 @@ func switch_character(current_scene_path):
 	primary_collected_item_ids = secondary_collected_item_ids
 	secondary_collected_item_ids = temp_primary_collected_items
 	
-	if current_character == CharacterType.MALE:
+	if is_male_player_active():
 		# switch to female scene
-		last_male_scene_path = current_scene_path
+		last_male_scene_path = from_scene_path
+		current_scene_path = last_female_scene_path
 		current_character = CharacterType.FEMALE
-		get_tree().change_scene_to_file(last_female_scene_path)
-	elif current_character == CharacterType.FEMALE:
+	else:
 		# switch to male scene
-		last_female_scene_path = current_scene_path
+		last_female_scene_path = from_scene_path
+		current_scene_path = last_male_scene_path
 		current_character = CharacterType.MALE
-		get_tree().change_scene_to_file(last_male_scene_path)
 
 func add_item_to_primary_inventory(item: Item):
 	if primary_collected_item_ids.has(item.id):
@@ -92,7 +103,7 @@ func replace_item_with_mock(item: Item):
 
 func collect_item(item: Item, scene_path: String):
 	add_item_to_primary_inventory(item)
-	if current_character == CharacterType.MALE:
+	if is_male_player_active():
 		remove_item_from_scene(item, scene_path)
 		replace_item_with_mock(item)
 	else:

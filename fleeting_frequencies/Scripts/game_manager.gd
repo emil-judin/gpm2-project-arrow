@@ -54,3 +54,20 @@ func _on_inventory_updated():
 func switch_character():
 	item_manager.save_items()
 	GameState.switch_character(get_tree().current_scene.scene_file_path)
+	load_scene_with_melting_transition(GameState.current_scene_path)
+	
+func load_scene_with_melting_transition(scene_path: String):
+	GameState.is_melting_transition = true
+	
+	get_tree().change_scene_to_file(scene_path)
+	
+	# Test code for async scene loading, is problematic because of groups for interaction
+	#var root = get_tree().get_root()
+	#var old_scene = get_tree().current_scene
+	#
+	#var new_scene = load(scene_path).instantiate()
+	#root.add_child(new_scene)
+	#get_tree().set_current_scene(new_scene)
+	#root.remove_child(old_scene)
+	#
+	#old_scene.free()

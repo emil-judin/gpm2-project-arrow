@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd7og5mw6wyob"]
+[gd_scene load_steps=9 format=3 uid="uid://bd7og5mw6wyob"]
 
 [ext_resource type="Script" path="res://Scripts/interaction_ui.gd" id="1_wegbt"]
 [ext_resource type="Texture2D" uid="uid://bsql6563mhn3f" path="res://Sprites/Front.png" id="1_wupr7"]
+[ext_resource type="Script" path="res://Scripts/melting_scene.gd" id="3_eng6b"]
+[ext_resource type="Texture2D" uid="uid://3rnsjvkc8kc0" path="res://Sprites/melting_background.png" id="3_ip6ud"]
+[ext_resource type="Shader" path="res://Shaders/melting.gdshader" id="4_q3wkq"]
+[ext_resource type="Script" path="res://Scripts/melting_scene_transition.gd" id="5_8kww6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_do1yl"]
 bg_color = Color(0.341176, 0.341176, 0.341176, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ip467"]
+shader = ExtResource("4_q3wkq")
+shader_parameter/reverse = false
+shader_parameter/melts_right = false
+shader_parameter/x_offsets = PackedFloat32Array()
+shader_parameter/melt_texture = ExtResource("3_ip6ud")
+shader_parameter/melting = false
+shader_parameter/timer = 0.0
 
 [node name="InteractionUi" type="Control"]
 layout_mode = 3
@@ -16,7 +29,19 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_wegbt")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="SceneTransition" type="Control" parent="."]
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_eng6b")
+melting_background_texture = ExtResource("3_ip6ud")
+
+[node name="Panel" type="Panel" parent="SceneTransition"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -29,11 +54,32 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_do1yl")
 
-[node name="SwitchCharacterButton" type="TextureButton" parent="Panel"]
+[node name="SwitchCharacterButton" type="TextureButton" parent="SceneTransition/Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = ExtResource("1_wupr7")
 stretch_mode = 3
 
-[connection signal="pressed" from="Panel/SwitchCharacterButton" to="." method="on_character_switch_pressed"]
+[node name="MeltingTransitionBackground" type="TextureRect" parent="SceneTransition"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeltingTransition" type="ColorRect" parent="SceneTransition/MeltingTransitionBackground"]
+material = SubResource("ShaderMaterial_ip467")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_8kww6")
+x_resolution = 200
+melt_speed = 0.75
+
+[connection signal="pressed" from="SceneTransition/Panel/SwitchCharacterButton" to="." method="on_character_switch_pressed"]
