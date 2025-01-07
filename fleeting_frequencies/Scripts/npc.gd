@@ -26,6 +26,6 @@ func is_position_on_interaction(position):
 	
 	return false
 
-func handle_interaction():
+func handle_interaction(game_manager: GameManager = null):
 	if is_interactable:
 		Dialogic.start('test_timeline')

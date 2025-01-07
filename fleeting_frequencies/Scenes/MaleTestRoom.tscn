@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bv810eum4yasy"]
+[gd_scene load_steps=12 format=3 uid="uid://bv810eum4yasy"]
 
 [ext_resource type="PackedScene" uid="uid://bnusdo17xnhc8" path="res://Scenes/GameManager.tscn" id="1_coq8o"]
 [ext_resource type="Texture2D" uid="uid://heol5seu4628" path="res://Sprites/Room.png" id="1_nubpr"]
 [ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/ItemManager.tscn" id="2_awipm"]
 [ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/InteractionManager.tscn" id="3_1jssl"]
 [ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/InventoryUi.tscn" id="4_88ucq"]
+[ext_resource type="PackedScene" uid="uid://crc06nb8cvdga" path="res://Scenes/Environment/Door.tscn" id="4_ibp8g"]
 [ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/InteractionUi.tscn" id="5_igf8n"]
 [ext_resource type="PackedScene" uid="uid://badqnpulvi0ps" path="res://Scenes/ComputerScreen.tscn" id="6_6n4al"]
 [ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/MalePlayer.tscn" id="6_bxmv0"]
@@ -17,11 +18,13 @@ position = Vector2(160, 90)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InteractionUi" parent="CanvasLayer" instance=ExtResource("5_igf8n")]
+metadata/_edit_use_anchors_ = true
 
 [node name="ScreenDesktop" parent="CanvasLayer" instance=ExtResource("6_6n4al")]
 visible = false
 
 [node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("4_88ucq")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Managers" type="Node" parent="."]
 
@@ -56,6 +59,10 @@ blend_mode = 1
 
 [node name="ItemSpot" parent="." instance=ExtResource("10_l4f6t")]
 position = Vector2(-59, 20)
+
+[node name="Door" parent="." instance=ExtResource("4_ibp8g")]
+position = Vector2(97, 43)
+destination_scene_path = "res://Scenes/FemaleTestRoom.tscn"
 
 [connection signal="triggered_character_switch" from="CanvasLayer/InteractionUi" to="Managers/GameManager" method="switch_character"]
 [connection signal="dropped_item" from="CanvasLayer/InventoryUi" to="Managers/GameManager" method="initiate_drop_item"]

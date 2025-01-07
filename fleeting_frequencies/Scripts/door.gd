@@ -1,12 +1,22 @@
-extends Node2D
+extends Interaction
+class_name Door
 
-@export_file("*.tscn") var scene_path
+@onready var _area: Area2D = $Area2D
+@onready var shape: CollisionShape2D = $Area2D/CollisionShape2D
+@export_file("*.tscn") var destination_scene_path: String
 
-func switch_to_target_scene():
-	get_tree().change_scene_to_file(scene_path)
+func handle_interaction(game_manager: GameManager = null):
+	game_manager.switch_room(destination_scene_path)
+
+func is_position_on_interaction(position):
+	var space_state = get_world_2d().direct_space_state
+	var params = PhysicsPointQueryParameters2D.new()
+	params.position = get_global_mouse_position()
+	params.collide_with_areas = true
 	
-func _on_door_entered(area: Area2D):
-	print("door entered")
-	if area.get_parent() is Player:
-		# TODO: do some saving?
-		switch_to_target_scene()
+	var out = space_state.intersect_point(params)
+	for found_collider in out:
+		if found_collider.get("collider") == _area:
+			return true
+	
+	return false

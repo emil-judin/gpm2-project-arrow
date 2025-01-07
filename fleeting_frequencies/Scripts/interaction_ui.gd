@@ -3,10 +3,6 @@ class_name InteractionUi
 
 signal triggered_character_switch
 @onready var scene_transition: SceneTransition = $SceneTransition
-
-func _ready():
-	if GameState.is_melting_transition:
-		GameState.is_melting_transition = false
 	
 func on_character_switch_pressed():
 	if GameState.is_male_player_active():

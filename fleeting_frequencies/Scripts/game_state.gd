@@ -5,8 +5,15 @@ enum CharacterType{
 	FEMALE
 }
 
+enum SCENE_TRANSITION_TYPE{
+	MELT,
+	PIXEL,
+	NONE
+}
+
 var current_character: CharacterType = CharacterType.MALE
 var current_scene_path: String
+var current_scene_transition_type: SCENE_TRANSITION_TYPE = SCENE_TRANSITION_TYPE.NONE
 var last_scene_path: String
 var last_male_scene_path: String = "res://Scenes/MaleTestRoom.tscn"
 var last_female_scene_path: String = "res://Scenes/FemaleTestRoom.tscn"
@@ -27,7 +34,7 @@ func is_male_player_active():
 func is_female_player_active():
 	return !is_male_player_active()
 
-func switch_character(from_scene_path):
+func switch_character(from_scene_path: String):
 	last_scene_path = from_scene_path
 	
 	# switch inventories
@@ -50,6 +57,15 @@ func switch_character(from_scene_path):
 		last_female_scene_path = from_scene_path
 		current_scene_path = last_male_scene_path
 		current_character = CharacterType.MALE
+
+func switch_room(destination_scene_path: String):
+	last_scene_path = current_scene_path
+	current_scene_path = destination_scene_path
+	
+	if is_male_player_active():
+		last_male_scene_path = last_scene_path
+	else:
+		last_female_scene_path = last_scene_path
 
 func add_item_to_primary_inventory(item: Item):
 	if primary_collected_item_ids.has(item.id):

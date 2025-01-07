@@ -1,4 +1,5 @@
 extends Node
+class_name GameManager
 
 @export var player: Player
 @export var item_manager: ItemManager
@@ -39,8 +40,8 @@ func _on_target_reached():
 			item_manager.handle_drop(item, drop_position)
 			dropping_item = false
 	elif current_interaction_target is Interaction:
-		var npc = current_interaction_target as Interaction
-		interaction_manager.handle_interaction(npc)
+		var interaction = current_interaction_target as Interaction
+		interaction_manager.handle_interaction(interaction, self)
 
 func initiate_drop_item(item: Item, drop_position: Vector2):
 	current_interaction_target = item
@@ -54,13 +55,19 @@ func _on_inventory_updated():
 func switch_character():
 	item_manager.save_items()
 	GameState.switch_character(get_tree().current_scene.scene_file_path)
-	load_scene_with_melting_transition(GameState.current_scene_path)
-	
-func load_scene_with_melting_transition(scene_path: String):
-	GameState.is_melting_transition = true
-	
-	get_tree().change_scene_to_file(scene_path)
-	
+	GameState.current_scene_transition_type = GameState.SCENE_TRANSITION_TYPE.MELT
+	get_tree().change_scene_to_file(GameState.current_scene_path)
+
+func switch_room(destination_scene_path: String):
+	item_manager.save_items()
+	interaction_ui.scene_transition.transition_to_room()
+	# hardcoded animation length
+	await get_tree().create_timer(1.5).timeout
+	GameState.switch_room(destination_scene_path)
+	GameState.current_scene_transition_type = GameState.SCENE_TRANSITION_TYPE.PIXEL
+	get_tree().change_scene_to_file(GameState.current_scene_path)
+
+#func load_scene_async(scene_path: String):
 	# Test code for async scene loading, is problematic because of groups for interaction
 	#var root = get_tree().get_root()
 	#var old_scene = get_tree().current_scene

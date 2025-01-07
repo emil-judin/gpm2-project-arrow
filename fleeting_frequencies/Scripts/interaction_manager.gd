@@ -16,5 +16,5 @@ func _on_interactions_updated():
 	var interaction_nodes = get_tree().get_nodes_in_group("interactions")
 	interactions.assign(interaction_nodes)
 
-func handle_interaction(interaction: Interaction):
-	interaction.handle_interaction()
+func handle_interaction(interaction: Interaction, game_manager: GameManager = null):
+	interaction.handle_interaction(game_manager)

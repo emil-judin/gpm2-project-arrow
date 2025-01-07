@@ -3,15 +3,27 @@ class_name SceneTransition
 
 @onready var background: TextureRect = $MeltingTransitionBackground
 @onready var melting_transition: MeltingTransition = $MeltingTransitionBackground/MeltingTransition
+@onready var pixelation: Pixelation = $Pixelation
 @export var melting_background_texture: Texture2D
 
 func _ready():
-	if GameState.is_melting_transition:
-		GameState.is_melting_transition = false
-		if GameState.is_male_player_active():
-			transition_from_past()
-		else:
-			transition_from_future()
+	match GameState.current_scene_transition_type:
+		GameState.SCENE_TRANSITION_TYPE.MELT:
+			GameState.current_scene_transition_type = GameState.SCENE_TRANSITION_TYPE.NONE
+			if GameState.is_male_player_active():
+				transition_from_past()
+			else:
+				transition_from_future()
+		GameState.SCENE_TRANSITION_TYPE.PIXEL:
+			GameState.current_scene_transition_type = GameState.SCENE_TRANSITION_TYPE.NONE
+			transition_from_room()
+
+func transition_to_room():
+	pixelation.play_pixel_out_animation()
+	await get_tree().create_timer(1.5).timeout
+
+func transition_from_room():
+	pixelation.play_pixel_in_animation()
 
 func transition_from_future():
 	await transition(false, false)

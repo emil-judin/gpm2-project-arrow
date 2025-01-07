@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd7og5mw6wyob"]
+[gd_scene load_steps=16 format=3 uid="uid://bd7og5mw6wyob"]
 
 [ext_resource type="Script" path="res://Scripts/interaction_ui.gd" id="1_wegbt"]
 [ext_resource type="Texture2D" uid="uid://bsql6563mhn3f" path="res://Sprites/Front.png" id="1_wupr7"]
-[ext_resource type="Script" path="res://Scripts/melting_scene.gd" id="3_eng6b"]
+[ext_resource type="Script" path="res://Scripts/scene_transition.gd" id="3_eng6b"]
 [ext_resource type="Texture2D" uid="uid://3rnsjvkc8kc0" path="res://Sprites/melting_background.png" id="3_ip6ud"]
 [ext_resource type="Shader" path="res://Shaders/melting.gdshader" id="4_q3wkq"]
 [ext_resource type="Script" path="res://Scripts/melting_scene_transition.gd" id="5_8kww6"]
+[ext_resource type="Shader" path="res://Shaders/pixelation.gdshader" id="7_mrgjq"]
+[ext_resource type="Script" path="res://Scripts/pixelation.gd" id="8_46jj2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_do1yl"]
 bg_color = Color(0.341176, 0.341176, 0.341176, 1)
@@ -18,6 +20,101 @@ shader_parameter/x_offsets = PackedFloat32Array()
 shader_parameter/melt_texture = ExtResource("3_ip6ud")
 shader_parameter/melting = false
 shader_parameter/timer = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jx5dg"]
+shader = ExtResource("7_mrgjq")
+shader_parameter/pixelFactor = 1.0
+
+[sub_resource type="Animation" id="Animation_6vjj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/pixelFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c6n1g"]
+resource_name = "pixel_in"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/pixelFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.3, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vcrn7"]
+resource_name = "pixel_out"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/pixelFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.3, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mab8y"]
+_data = {
+"RESET": SubResource("Animation_6vjj6"),
+"pixel_in": SubResource("Animation_c6n1g"),
+"pixel_out": SubResource("Animation_vcrn7")
+}
 
 [node name="InteractionUi" type="Control"]
 layout_mode = 3
@@ -81,5 +178,21 @@ grow_vertical = 2
 script = ExtResource("5_8kww6")
 x_resolution = 200
 melt_speed = 0.75
+
+[node name="Pixelation" type="ColorRect" parent="SceneTransition"]
+visible = false
+material = SubResource("ShaderMaterial_jx5dg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_46jj2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransition/Pixelation"]
+libraries = {
+"": SubResource("AnimationLibrary_mab8y")
+}
 
 [connection signal="pressed" from="SceneTransition/Panel/SwitchCharacterButton" to="." method="on_character_switch_pressed"]
