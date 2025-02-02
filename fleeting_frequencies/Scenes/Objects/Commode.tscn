@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcrheuu1kmqvg"]
+
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_ioaho"]
+[ext_resource type="Texture2D" uid="uid://cckddabfuyjmd" path="res://Sprites/Objects/commode.png" id="2_ehagr"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_2um55"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("1_ioaho")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[node name="Commode" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-9, -32)
+texture = ExtResource("2_ehagr")
+centered = false
+
+[node name="ItemSpot" parent="." instance=ExtResource("3_2um55")]
+position = Vector2(0, -32)
+scale = Vector2(0.9, 1)

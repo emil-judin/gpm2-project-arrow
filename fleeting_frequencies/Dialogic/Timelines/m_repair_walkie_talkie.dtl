@@ -1,0 +1,10 @@
+if {GameState.repaired_walkie_talkie} == true:
+	male_character: Ich hab das Walkie Talkie bereits repariert.
+else:
+	male_character: Also, ich brauch eine neue Batterie und einen Schraubenzieher um das Walkie Talkie zu reparieren
+	[signal arg="check_repair"]
+	if {GameState.repaired_walkie_talkie} == true:
+		male_character: Damit sollte es gehen!
+		[signal arg="on_walkie_talkie_repaired"]
+	else:
+		male_character: Sie müssen hier irgendwo rumliegen...

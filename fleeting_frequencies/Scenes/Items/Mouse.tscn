@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cts0h8sbw20sh"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_hjp6e"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_qdnt7"]
+[ext_resource type="Texture2D" uid="uid://dvldpldmg83jb" path="res://Sprites/Items/computer_mouse.png" id="2_noxja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adxc1"]
+resource_local_to_scene = true
+shader = ExtResource("1_qdnt7")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibc6x"]
+size = Vector2(11, 3)
+
+[node name="Mouse" type="Node2D" groups=["items"]]
+script = ExtResource("1_hjp6e")
+item_name = "Maus"
+description = "Eine Maus für den Computer"
+is_collectible = true
+is_droppable = true
+id = "computer_mouse"
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_adxc1")
+position = Vector2(-5, -3)
+texture = ExtResource("2_noxja")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_ibc6x")
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_item_clicked"]

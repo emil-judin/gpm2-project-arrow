@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnn5ekaaxpriy"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_qojhd"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_euywq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayavd"]
+resource_local_to_scene = true
+shader = ExtResource("2_euywq")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kta24"]
+
+[node name="Item" type="Node2D" groups=["items"]]
+script = ExtResource("1_qojhd")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ayavd")
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("RectangleShape2D_kta24")
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_item_clicked"]

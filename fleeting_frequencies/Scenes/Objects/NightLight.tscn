@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://byja3rt7oer5"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/lava_lamp.gd" id="1_wk66a"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_rkhyg"]
+[ext_resource type="Texture2D" uid="uid://d2nljhpqqwuh2" path="res://Sprites/Objects/female-light.png" id="3_dn2hl"]
+[ext_resource type="AudioStream" uid="uid://bby47faagw3wr" path="res://Audio/light.wav" id="4_8eth5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("2_rkhyg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xm3x"]
+size = Vector2(10, 15)
+
+[sub_resource type="Gradient" id="Gradient_rfm1k"]
+offsets = PackedFloat32Array(0.0576324, 0.665109)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v42gr"]
+gradient = SubResource("Gradient_rfm1k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="NightLight" type="Node2D" node_paths=PackedStringArray("light") groups=["interactions"]]
+script = ExtResource("1_wk66a")
+light = NodePath("PointLight2D")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-5, -15)
+texture = ExtResource("3_dn2hl")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_3xm3x")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -11)
+color = Color(0.909804, 0.717647, 0.588235, 1)
+texture = SubResource("GradientTexture2D_v42gr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8eth5")
+volume_db = -10.0

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfi7h8efk7r02"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/television.gd" id="1_d6cbj"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="4_ehqo3"]
+[ext_resource type="Texture2D" uid="uid://tamsy1v7xty1" path="res://Sprites/Objects/small_tv.png" id="5_up41g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jisdr"]
+resource_local_to_scene = true
+shader = ExtResource("4_ehqo3")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_incss"]
+size = Vector2(20, 16)
+
+[sub_resource type="Gradient" id="Gradient_vw8wi"]
+offsets = PackedFloat32Array(0, 0.681293)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fy61a"]
+gradient = SubResource("Gradient_vw8wi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Television" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_d6cbj")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jisdr")
+position = Vector2(-10, -16)
+texture = ExtResource("5_up41g")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_incss")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_fy61a")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd7og5mw6wyob"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/interaction_ui.gd" id="1_wegbt"]
+[ext_resource type="Texture2D" uid="uid://bsql6563mhn3f" path="res://Sprites/Characters/both_front.png" id="1_wupr7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_do1yl"]
+bg_color = Color(0.341176, 0.341176, 0.341176, 1)
+
+[node name="InteractionUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_wegbt")
+
+[node name="CharacterSwitchPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_do1yl")
+
+[node name="SwitchCharacterButton" type="TextureButton" parent="CharacterSwitchPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_wupr7")
+stretch_mode = 3
+
+[connection signal="pressed" from="CharacterSwitchPanel/SwitchCharacterButton" to="." method="on_character_switch_pressed"]

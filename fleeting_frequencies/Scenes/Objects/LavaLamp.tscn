@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://b137ne15e5efu"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/lava_lamp.gd" id="1_5spw5"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_r07lu"]
+[ext_resource type="AudioStream" uid="uid://bby47faagw3wr" path="res://Audio/light.wav" id="4_evgot"]
+[ext_resource type="Texture2D" uid="uid://dpu6trokew0s5" path="res://Sprites/Objects/lava_lamp.png" id="4_sn6ap"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("2_r07lu")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xm3x"]
+size = Vector2(8, 22)
+
+[sub_resource type="Gradient" id="Gradient_rfm1k"]
+offsets = PackedFloat32Array(0.0576324, 0.665109)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v42gr"]
+gradient = SubResource("Gradient_rfm1k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="LavaLamp" type="Node2D" node_paths=PackedStringArray("light") groups=["interactions"]]
+script = ExtResource("1_5spw5")
+light = NodePath("PointLight2D")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-4, -22)
+texture = ExtResource("4_sn6ap")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_3xm3x")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -11)
+color = Color(0.709804, 0.313726, 0.533333, 1)
+texture = SubResource("GradientTexture2D_v42gr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_evgot")
+volume_db = -10.0

@@ -14,3 +14,8 @@ func _area_entered(area: Area2D):
 		for scene_path in connected_scene_paths:
 			print("saving to " + scene_path)
 			GameState.add_item_to_scene(item, scene_path)
+			if !GameState.hidden_first_item && GameState.has_returned_from_diner && item.id == "computer_mouse":
+				GameState.hidden_first_item = true
+				print("hidden_first_item")
+				WalkieTalkie.play()
+				Dialogic.start_timeline("f_hidden_first_item")

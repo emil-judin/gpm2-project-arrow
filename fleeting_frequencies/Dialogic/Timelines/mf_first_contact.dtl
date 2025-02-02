@@ -1,0 +1,13 @@
+male_character: Hallo? Kann mich jemand hören?
+female_character: Uh... Hallo? Wer ist das?
+male_character: Perfekt, es hat funktioniert! Ich heiße Sam. Ich bin hier neu in der Nachbarschaft.
+female_character: Sam? Ich hab gar nicht mitbekommen, dass hier jemand neu eingezogen ist...
+female_character: Wie auch immer, ich bin Sarah.
+male_character: Hey Sarah!
+female_character: Warst du schon in der Nachbarschaft unterwegs?
+male_character: Nein, noch nicht. Wir sind erst vor paar Tagen angekommen...
+male_character: Ich hab gehört, dass es hier einen guten Diner in der Nähe gibt.
+female_character: Ja, genau! Das Timeless Diner. Lust dort zu treffen?
+female_character: Dann kann ich dir mal die Nachbarschaft zeigen
+male_character: Ja, gerne! Sehen uns dort, over...
+[signal arg="on_first_contact_made"]

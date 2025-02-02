@@ -21,7 +21,7 @@ void fragment() {
 	if (melting)
 	{
 		float index = texture_uv.y * float(x_offsets.length());
-		
+
 		float offset = timer * x_offsets[int(index)];
 		if (reverse)
 			if (melts_right){
@@ -42,6 +42,6 @@ void fragment() {
 				if (texture_uv.x < 0.0) discard;
 			}
 	}
-	
+
 	COLOR = texture(melt_texture, texture_uv);
 }

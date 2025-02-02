@@ -1,0 +1,144 @@
+[gd_scene load_steps=27 format=3 uid="uid://daaj2k48rxhm6"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_4d1gm"]
+[ext_resource type="Texture2D" uid="uid://pc5bvipbjmsb" path="res://Sprites/Maps/m_corridor.png" id="2_1rpur"]
+[ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_fj7t1"]
+[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="3_7f3ch"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/Ui/InventoryUi.tscn" id="4_cufjq"]
+[ext_resource type="PackedScene" uid="uid://cts031oq8v2b7" path="res://Scenes/Others/Camera.tscn" id="4_nb11e"]
+[ext_resource type="PackedScene" uid="uid://bk88df0mi1gc3" path="res://Scenes/Ui/InputBlocker.tscn" id="5_x3luq"]
+[ext_resource type="PackedScene" uid="uid://d1811w0gduqxg" path="res://Scenes/Ui/SceneTransition.tscn" id="6_bbe0x"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/Managers/ItemManager.tscn" id="7_a4k7v"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/Managers/InteractionManager.tscn" id="8_4tkm7"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/Characters/MalePlayer.tscn" id="9_gr5gb"]
+[ext_resource type="PackedScene" uid="uid://crc06nb8cvdga" path="res://Scenes/Objects/WhiteDoor.tscn" id="11_qir6r"]
+[ext_resource type="PackedScene" uid="uid://daxuge4p5frci" path="res://Scenes/Objects/BlindsSide.tscn" id="13_crhl8"]
+[ext_resource type="PackedScene" uid="uid://qelm8awf3soe" path="res://Scenes/Objects/Flowey.tscn" id="14_wnrnp"]
+[ext_resource type="PackedScene" uid="uid://dytq1an8bee34" path="res://Scenes/Objects/WhiteStairCaseDown.tscn" id="15_4vhgs"]
+[ext_resource type="PackedScene" uid="uid://cigcuih8mfxyl" path="res://Scenes/Objects/Pictures.tscn" id="16_my8q3"]
+[ext_resource type="PackedScene" uid="uid://xdd12y0ni56t" path="res://Scenes/Objects/DirtyLaundryBasket.tscn" id="16_uqa8a"]
+[ext_resource type="PackedScene" uid="uid://dcrheuu1kmqvg" path="res://Scenes/Objects/Commode.tscn" id="17_jof4m"]
+[ext_resource type="PackedScene" uid="uid://rlp7lwp0ggad" path="res://Scenes/Objects/CardboardLarge.tscn" id="19_n0i04"]
+[ext_resource type="PackedScene" uid="uid://bsh031vqqd6qh" path="res://Scenes/Objects/CardboardMedium.tscn" id="20_i76yh"]
+[ext_resource type="PackedScene" uid="uid://byfue13eqfcr7" path="res://Scenes/Objects/CardboardSmall.tscn" id="21_jiq02"]
+[ext_resource type="PackedScene" uid="uid://ce2p0pallp6yd" path="res://Scenes/Objects/LightSwitch.tscn" id="22_nnmn1"]
+[ext_resource type="PackedScene" uid="uid://c56mllohvkr2h" path="res://Scenes/Objects/CeilingLamp.tscn" id="23_tdcwb"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="24_vu0jp"]
+[ext_resource type="PackedScene" uid="uid://c5nrmc80aenlr" path="res://Scenes/Items/ScrewDriver.tscn" id="25_jfnhw"]
+[ext_resource type="PackedScene" uid="uid://dikbuvcvmf4nw" path="res://Scenes/Items/Wires.tscn" id="26_cgq4w"]
+
+[node name="M_Corridor" type="Node2D" node_paths=PackedStringArray("player", "map", "camera", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui", "input_blocker", "scene_transition")]
+position = Vector2(160, 90)
+script = ExtResource("1_4d1gm")
+scene_path = "res://Scenes/M_Corridor.tscn"
+player = NodePath("MalePlayer")
+map = NodePath("Map")
+camera = NodePath("Camera")
+item_manager = NodePath("Managers/ItemManager")
+interaction_manager = NodePath("Managers/InteractionManager")
+inventory_ui = NodePath("CanvasLayer/InventoryUi")
+interaction_ui = NodePath("CanvasLayer/InteractionUi")
+input_blocker = NodePath("CanvasLayer/InputBlocker")
+scene_transition = NodePath("CanvasLayer/SceneTransition")
+
+[node name="Map" parent="." instance=ExtResource("2_fj7t1")]
+position = Vector2(-160, -90)
+texture = ExtResource("2_1rpur")
+
+[node name="Camera" parent="." instance=ExtResource("4_nb11e")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InteractionUi" parent="CanvasLayer" node_paths=PackedStringArray("scene_transition") instance=ExtResource("3_7f3ch")]
+scene_transition = NodePath("../SceneTransition")
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("4_cufjq")]
+metadata/_edit_use_anchors_ = true
+
+[node name="InputBlocker" parent="CanvasLayer" instance=ExtResource("5_x3luq")]
+
+[node name="SceneTransition" parent="CanvasLayer" instance=ExtResource("6_bbe0x")]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="ItemManager" parent="Managers" node_paths=PackedStringArray("items_parent") instance=ExtResource("7_a4k7v")]
+items_parent = NodePath("../../Items")
+
+[node name="InteractionManager" parent="Managers" instance=ExtResource("8_4tkm7")]
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Batteries" parent="Items" instance=ExtResource("26_cgq4w")]
+position = Vector2(4, 104)
+
+[node name="ScrewDriver" parent="Items" instance=ExtResource("25_jfnhw")]
+position = Vector2(360, 104)
+
+[node name="MalePlayer" parent="." instance=ExtResource("9_gr5gb")]
+position = Vector2(-16, 46)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.286853, 0.677329, 0.530953, 1)
+energy = 0.6
+blend_mode = 1
+
+[node name="WhiteDoor2" parent="." instance=ExtResource("11_qir6r")]
+position = Vector2(4, 46)
+destination_scene_path = "res://Scenes/Maps/M_Bedroom.tscn"
+
+[node name="WhiteDoor" parent="." instance=ExtResource("11_qir6r")]
+position = Vector2(265, 46)
+locked = true
+
+[node name="SideBlinds" parent="." instance=ExtResource("13_crhl8")]
+position = Vector2(-134, 3)
+
+[node name="WhiteStairCaseDown" parent="." instance=ExtResource("15_4vhgs")]
+position = Vector2(-89, 46)
+destination_scene_path = "res://Scenes/Maps/M_Diner.tscn"
+
+[node name="DirtyLaundryBasket" parent="." instance=ExtResource("16_uqa8a")]
+position = Vector2(138, 46)
+
+[node name="Flowey" parent="." instance=ExtResource("14_wnrnp")]
+position = Vector2(-149, 14)
+
+[node name="Commode" parent="." instance=ExtResource("17_jof4m")]
+position = Vector2(-149, 46)
+
+[node name="Pictures" parent="." instance=ExtResource("16_my8q3")]
+position = Vector2(-90, 3)
+
+[node name="CardboardLarge" parent="." instance=ExtResource("19_n0i04")]
+position = Vector2(201, 46)
+
+[node name="CardboardMedium" parent="." instance=ExtResource("20_i76yh")]
+position = Vector2(174, 46)
+
+[node name="CardboardSmall" parent="." instance=ExtResource("21_jiq02")]
+position = Vector2(174, 30)
+
+[node name="LightSwitch" parent="." node_paths=PackedStringArray("toggle_light") instance=ExtResource("22_nnmn1")]
+position = Vector2(-23, 18)
+toggle_light = NodePath("../CeilingLamp")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("23_tdcwb")]
+position = Vector2(53, -46)
+
+[node name="LightSwitch2" parent="." node_paths=PackedStringArray("toggle_light") instance=ExtResource("22_nnmn1")]
+position = Vector2(238, 19)
+toggle_light = NodePath("../CeilingLamp2")
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("23_tdcwb")]
+position = Vector2(186, -46)
+
+[node name="WhiteDoor3" parent="." instance=ExtResource("11_qir6r")]
+position = Vector2(80, 46)
+locked = true
+
+[node name="ItemSpots" type="Node" parent="."]
+
+[node name="GroundItemSpot" parent="ItemSpots" instance=ExtResource("24_vu0jp")]
+position = Vector2(156, 136)
+scale = Vector2(40, 1)

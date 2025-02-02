@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmcfay66g1507"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_nndgm"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_80gu7"]
+[ext_resource type="Texture2D" uid="uid://cw4xiruprg366" path="res://Sprites/Items/racecar.png" id="3_jqwlg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1qjl"]
+resource_local_to_scene = true
+shader = ExtResource("2_80gu7")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibc6x"]
+size = Vector2(12, 5)
+
+[node name="PlayCar" type="Node2D" groups=["items"]]
+script = ExtResource("1_nndgm")
+item_name = "Rennauto"
+description = "Überaus aerodynamisch"
+is_collectible = true
+is_droppable = true
+id = "play_car"
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.1, 0.1, 1)
+material = SubResource("ShaderMaterial_y1qjl")
+position = Vector2(-5, -5)
+texture = ExtResource("3_jqwlg")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_ibc6x")
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_item_clicked"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://daaj2k48rxhm6"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_4d1gm"]
+[ext_resource type="Texture2D" uid="uid://nnu8f07f3irx" path="res://Sprites/Maps/m_corridor.png" id="2_1rpur"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="2_jq2cn"]
+[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="3_7f3ch"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/Ui/InventoryUi.tscn" id="4_cufjq"]
+[ext_resource type="PackedScene" uid="uid://bk88df0mi1gc3" path="res://Scenes/Ui/InputBlocker.tscn" id="5_x3luq"]
+[ext_resource type="PackedScene" uid="uid://d1811w0gduqxg" path="res://Scenes/Ui/SceneTransition.tscn" id="6_bbe0x"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/Managers/ItemManager.tscn" id="7_a4k7v"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/Managers/InteractionManager.tscn" id="8_4tkm7"]
+[ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/Characters/MalePlayer.tscn" id="9_gr5gb"]
+[ext_resource type="PackedScene" uid="uid://crc06nb8cvdga" path="res://Scenes/Objects/WhiteDoor.tscn" id="11_qir6r"]
+
+[node name="M_Corridor" type="Node2D" node_paths=PackedStringArray("player", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui", "input_blocker", "scene_transition")]
+position = Vector2(160, 90)
+script = ExtResource("1_4d1gm")
+scene_path = "res://Scenes/M_Corridor.tscn"
+player = NodePath("MalePlayer")
+item_manager = NodePath("Managers/ItemManager")
+interaction_manager = NodePath("Managers/InteractionManager")
+inventory_ui = NodePath("CanvasLayer/InventoryUi")
+interaction_ui = NodePath("CanvasLayer/InteractionUi")
+input_blocker = NodePath("CanvasLayer/InputBlocker")
+scene_transition = NodePath("CanvasLayer/SceneTransition")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map", "player")]
+script = ExtResource("2_jq2cn")
+map = NodePath("../Room")
+player = NodePath("../MalePlayer")
+follow_margin = null
+
+[node name="Room" type="Sprite2D" parent="."]
+texture = ExtResource("2_1rpur")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InteractionUi" parent="CanvasLayer" node_paths=PackedStringArray("scene_transition") instance=ExtResource("3_7f3ch")]
+scene_transition = NodePath("../SceneTransition")
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("4_cufjq")]
+metadata/_edit_use_anchors_ = true
+
+[node name="InputBlocker" parent="CanvasLayer" instance=ExtResource("5_x3luq")]
+
+[node name="SceneTransition" parent="CanvasLayer" instance=ExtResource("6_bbe0x")]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="ItemManager" parent="Managers" node_paths=PackedStringArray("items_parent") instance=ExtResource("7_a4k7v")]
+items_parent = NodePath("../../Items")
+
+[node name="InteractionManager" parent="Managers" instance=ExtResource("8_4tkm7")]
+
+[node name="Items" type="Node" parent="."]
+
+[node name="MalePlayer" parent="." instance=ExtResource("9_gr5gb")]
+position = Vector2(-16, 46)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.286853, 0.677329, 0.530953, 1)
+energy = 0.6
+blend_mode = 1
+
+[node name="WhiteDoor2" parent="." instance=ExtResource("11_qir6r")]
+position = Vector2(-128, 46)
+destination_scene_path = "res://Scenes/M_Bedroom.tscn"
+
+[node name="WhiteDoor" parent="." instance=ExtResource("11_qir6r")]
+position = Vector2(116, 46)
+destination_scene_path = "res://Scenes/M_Diner.tscn"

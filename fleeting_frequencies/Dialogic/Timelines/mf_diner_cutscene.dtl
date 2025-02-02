@@ -1,0 +1,3 @@
+male_character: Bin ich hier falsch? Ich dachte das wär das Timeless Diner...
+female_character: Wo bleibt Sam bloß? Hat er mich etwa Sitzen lassen?
+[signal arg="on_diner_cutscene_finished"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh8e8kitpnv6j"]
+
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_rdt87"]
+[ext_resource type="Texture2D" uid="uid://c75wgrmbvs4xb" path="res://Sprites/Objects/female-bed.png" id="2_de5ln"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_8plkc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("1_rdt87")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[node name="WhiteBed" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-36, -28)
+texture = ExtResource("2_de5ln")
+centered = false
+
+[node name="ItemSpot" parent="." instance=ExtResource("3_8plkc")]
+position = Vector2(7, -17)
+scale = Vector2(2.1, 1)

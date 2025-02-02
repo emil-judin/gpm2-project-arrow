@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://kbm5e7rg17eo"]
+
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_ga7ql"]
+[ext_resource type="Texture2D" uid="uid://bmn5u6n45hdnf" path="res://Sprites/Objects/night_table.png" id="2_njuao"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_qvn5e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("1_ga7ql")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[node name="NightTable" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-11, -24)
+texture = ExtResource("2_njuao")
+centered = false
+
+[node name="ItemSpot" parent="." instance=ExtResource("3_qvn5e")]
+position = Vector2(0, -24)
+scale = Vector2(1.1, 1)

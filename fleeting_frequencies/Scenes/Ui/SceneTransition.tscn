@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1811w0gduqxg"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/scene_transition.gd" id="1_u8e73"]
+[ext_resource type="Texture2D" uid="uid://3rnsjvkc8kc0" path="res://Sprites/Other/melting_background.png" id="2_ff7y1"]
+[ext_resource type="Shader" path="res://Shaders/melting.gdshader" id="3_eh6ju"]
+[ext_resource type="Script" path="res://Scripts/Ui/melting_scene_transition.gd" id="4_a7yro"]
+[ext_resource type="Shader" path="res://Shaders/pixelation.gdshader" id="5_wklal"]
+[ext_resource type="Script" path="res://Scripts/Ui/pixelation.gd" id="6_8x7e3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3a8sl"]
+shader = ExtResource("3_eh6ju")
+shader_parameter/reverse = false
+shader_parameter/melts_right = false
+shader_parameter/x_offsets = PackedFloat32Array()
+shader_parameter/melt_texture = ExtResource("2_ff7y1")
+shader_parameter/melting = false
+shader_parameter/timer = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c841k"]
+shader = ExtResource("5_wklal")
+shader_parameter/pixelFactor = 1.0
+
+[sub_resource type="Animation" id="Animation_6vjj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/pixelFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c6n1g"]
+resource_name = "pixel_in"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/pixelFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.3, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vcrn7"]
+resource_name = "pixel_out"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/pixelFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.3, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mab8y"]
+_data = {
+"RESET": SubResource("Animation_6vjj6"),
+"pixel_in": SubResource("Animation_c6n1g"),
+"pixel_out": SubResource("Animation_vcrn7")
+}
+
+[node name="SceneTransition" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_u8e73")
+melting_background_texture = ExtResource("2_ff7y1")
+
+[node name="MeltingTransitionBackground" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeltingTransition" type="ColorRect" parent="MeltingTransitionBackground"]
+material = SubResource("ShaderMaterial_3a8sl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_a7yro")
+x_resolution = 200
+melt_speed = 0.75
+
+[node name="Pixelation" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_c841k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_8x7e3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pixelation"]
+libraries = {
+"": SubResource("AnimationLibrary_mab8y")
+}

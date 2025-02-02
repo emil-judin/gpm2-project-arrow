@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsh031vqqd6qh"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_bby1d"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_267hc"]
+[ext_resource type="Texture2D" uid="uid://cjsmx26jupin" path="res://Sprites/Objects/medium-cardboard.png" id="3_f7r7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("2_267hc")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xm3x"]
+size = Vector2(25.5, 16)
+
+[node name="CardboardMedium" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_bby1d")
+interaction_text = "Das ist ein mittlerer Karton"
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-12, -16)
+texture = ExtResource("3_f7r7v")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0.75, -8)
+shape = SubResource("RectangleShape2D_3xm3x")

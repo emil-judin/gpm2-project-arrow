@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://0f7wq2a0g8qf"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/chair.gd" id="1_e6nsp"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_lh26k"]
+[ext_resource type="Texture2D" uid="uid://dviah7snbcmkd" path="res://Sprites/Objects/female-chair.png" id="3_8ykoo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("2_lh26k")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xm3x"]
+size = Vector2(16, 34)
+
+[node name="DeskChair" type="Node2D" node_paths=PackedStringArray("sit_position") groups=["interactions"]]
+script = ExtResource("1_e6nsp")
+sit_position = NodePath("SitPostion")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-9, -34)
+texture = ExtResource("3_8ykoo")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(-1, -17)
+shape = SubResource("RectangleShape2D_3xm3x")
+
+[node name="SitPostion" type="Node2D" parent="."]
+position = Vector2(0, -17)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce2p0pallp6yd"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/light_switch.gd" id="1_vhd25"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_0vc7p"]
+[ext_resource type="Texture2D" uid="uid://qtxw1bwdax1w" path="res://Sprites/Objects/light_switch.png" id="2_7ehkb"]
+[ext_resource type="AudioStream" uid="uid://bby47faagw3wr" path="res://Audio/light.wav" id="4_g88qj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bmjs"]
+resource_local_to_scene = true
+shader = ExtResource("2_0vc7p")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xm3x"]
+size = Vector2(7, 8)
+
+[node name="LightSwitch" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_vhd25")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4bmjs")
+position = Vector2(-3, -8)
+texture = ExtResource("2_7ehkb")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_3xm3x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_g88qj")
+volume_db = -10.0

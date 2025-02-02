@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds2fbx1nbu2e8"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/little_sister.gd" id="1_k0bws"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_6lale"]
+[ext_resource type="Texture2D" uid="uid://dwagacc5resln" path="res://Sprites/Characters/little-sister-standing.png" id="3_yft7l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5unkk"]
+resource_local_to_scene = true
+shader = ExtResource("2_6lale")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85di0"]
+size = Vector2(12, 28)
+
+[node name="LittleSister" type="Node2D" groups=["interactions"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_k0bws")
+npc_name = "Little Sister"
+description = "smol"
+is_interactable = true
+id = "little_sister"
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5unkk")
+position = Vector2(-6.66667, -28)
+texture = ExtResource("3_yft7l")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(-0.666667, -14)
+shape = SubResource("RectangleShape2D_85di0")

@@ -1,0 +1,10 @@
+female_character: Der News Report läuft grad
+female_character: Oh mein Gott...
+female_character: Scheinbar hat die Arcade wirklich Feuer gefangen!
+female_character: Woher hast du das gewusst?
+female_character: Wie ist das möglich...
+female_character: Sam?
+female_character: Sam, bitte kommen!
+female_character: Sam?
+female_character: ...
+[signal arg="on_tv_message"]

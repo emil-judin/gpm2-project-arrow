@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5tbprfexp1yh"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/main_menu.gd" id="1_g2dfh"]
+[ext_resource type="FontFile" uid="uid://bm851u6yhhycy" path="res://Fonts/retropix.ttf" id="2_e6q2r"]
+[ext_resource type="Texture2D" uid="uid://dj5g2fbbqscpd" path="res://Sprites/Other/File.png" id="3_kcf3h"]
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_fsff0"]
+[ext_resource type="AudioStream" uid="uid://df4fusg3r6hyj" path="res://Audio/mouse_click.wav" id="5_wo7q8"]
+[ext_resource type="AudioStream" uid="uid://8yo1qu8a2bnf" path="res://Audio/neon.mp3" id="6_8gx4r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hsko"]
+bg_color = Color(0, 0.333333, 0.666667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsgag"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx6wd"]
+shader = ExtResource("4_fsff0")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.025
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.1
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g2dfh")
+
+[node name="Desktop" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Background" type="Panel" parent="Desktop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8hsko")
+
+[node name="Bar" type="Panel" parent="Desktop"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 13.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qsgag")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Desktop/Bar"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 42.0
+offset_top = 1.0
+offset_right = 27.0
+offset_bottom = 15.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0.333333, 0.666667, 1)
+theme_override_fonts/normal_font = ExtResource("2_e6q2r")
+theme_override_font_sizes/normal_font_size = 8
+text = "Fleeting Frequencies		Version 0.1			"
+fit_content = true
+
+[node name="GridContainer" type="GridContainer" parent="Desktop"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 47.0
+offset_right = 180.0
+offset_bottom = 205.0
+
+[node name="File1Container" type="VBoxContainer" parent="Desktop/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Desktop/GridContainer/File1Container"]
+layout_mode = 2
+texture = ExtResource("3_kcf3h")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Desktop/GridContainer/File1Container"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_e6q2r")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[center]Play[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="File2Container" type="VBoxContainer" parent="Desktop/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Desktop/GridContainer/File2Container"]
+layout_mode = 2
+texture = ExtResource("3_kcf3h")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Desktop/GridContainer/File2Container"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_e6q2r")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[center]Quit[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fx6wd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.351221, 0.509853, 0.352563, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wo7q8")
+volume_db = -10.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8gx4r")
+autoplay = true
+
+[connection signal="gui_input" from="Desktop/GridContainer/File1Container" to="." method="start_game"]
+[connection signal="gui_input" from="Desktop/GridContainer/File2Container" to="." method="quit_game"]

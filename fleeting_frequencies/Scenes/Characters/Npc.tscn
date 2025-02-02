@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dytp3kqr7x2v8"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/npc.gd" id="1_u615f"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_6lale"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5unkk"]
+resource_local_to_scene = true
+shader = ExtResource("2_6lale")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85di0"]
+size = Vector2(15, 40)
+
+[node name="Npc" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_u615f")
+is_interactable = true
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_5unkk")
+position = Vector2(-8, -40)
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(-0.5, -20)
+shape = SubResource("RectangleShape2D_85di0")

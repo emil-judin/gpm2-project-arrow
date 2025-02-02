@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpirisaf0gdn3"]
+
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_kdjwv"]
+[ext_resource type="Texture2D" uid="uid://bn3bkjatl187u" path="res://Sprites/Objects/diner-bar.png" id="2_6povu"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_p8y6p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("1_kdjwv")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[node name="DinerBar" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-12, -39)
+texture = ExtResource("2_6povu")
+centered = false
+
+[node name="ItemSpot" parent="." instance=ExtResource("3_p8y6p")]
+position = Vector2(-1, -39)
+scale = Vector2(1.1, 2)

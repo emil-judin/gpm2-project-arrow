@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://b63upfjafi51j"]
+
+[ext_resource type="Texture2D" uid="uid://dqnjvq3ufrux2" path="res://Sprites/Objects/blinds_open.png" id="1_sod2s"]
+[ext_resource type="Script" path="res://Scripts/Interactions/blinds.gd" id="1_yix7r"]
+[ext_resource type="Shader" path="res://Shaders/light_rays.gdshader" id="2_mux0a"]
+[ext_resource type="Texture2D" uid="uid://b31nu4llskxd6" path="res://icon.svg" id="3_6al10"]
+[ext_resource type="Texture2D" uid="uid://oowd6tw40vr3" path="res://Sprites/Objects/blinds_closed.png" id="3_v80sv"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="4_i3jd5"]
+[ext_resource type="Texture2D" uid="uid://06qo83p7lpjh" path="res://Sprites/Other/pixel.png" id="4_v17am"]
+[ext_resource type="AudioStream" uid="uid://ejptfng7srni" path="res://Audio/blinds.mp3" id="8_6bqxo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwy3e"]
+resource_local_to_scene = true
+shader = ExtResource("4_i3jd5")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asiv6"]
+shader = ExtResource("2_mux0a")
+shader_parameter/angle = -0.3
+shader_parameter/position = -0.2
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.0700001
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.4
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 11.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.760784, 0.572549, 0.486275)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xxqo5"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0.968627, 0.945098, 0.541176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4lqr"]
+size = Vector2(51, 30)
+
+[node name="Blinds" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_yix7r")
+open_blinds_sprite = ExtResource("1_sod2s")
+closed_blinds_sprite = ExtResource("3_v80sv")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mwy3e")
+position = Vector2(-26, -30)
+texture = ExtResource("1_sod2s")
+centered = false
+
+[node name="Rays" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_asiv6")
+position = Vector2(-101, -27)
+scale = Vector2(0.96875, 0.481)
+texture = ExtResource("3_6al10")
+centered = false
+flip_h = true
+
+[node name="DustParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-43, 19)
+scale = Vector2(0.290909, 0.0945459)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_xxqo5")
+texture = ExtResource("4_v17am")
+lifetime = 3.0
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(-0.5, -15)
+shape = SubResource("RectangleShape2D_j4lqr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_6bqxo")
+volume_db = -10.0

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxdaus3lhcy2f"]
+
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_bmaf2"]
+[ext_resource type="Texture2D" uid="uid://dsmds32sb3i31" path="res://Sprites/Objects/table.png" id="2_f2pxx"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_31yia"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
+resource_local_to_scene = true
+shader = ExtResource("2_bmaf2")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[node name="Table" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c25nr")
+position = Vector2(-29, -26)
+texture = ExtResource("2_f2pxx")
+centered = false
+
+[node name="ItemSpot" parent="." instance=ExtResource("3_31yia")]
+position = Vector2(1, -26)
+scale = Vector2(3, 1)

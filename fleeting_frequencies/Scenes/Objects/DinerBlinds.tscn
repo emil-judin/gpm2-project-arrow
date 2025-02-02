@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddywy8x2pw7qk"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/blinds.gd" id="1_8qu4v"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="4_gxkix"]
+[ext_resource type="Shader" path="res://Shaders/light_rays.gdshader" id="5_bex1w"]
+[ext_resource type="Texture2D" uid="uid://or34mad1yhny" path="res://Sprites/Objects/diner-windows.png" id="5_hnwwd"]
+[ext_resource type="Texture2D" uid="uid://b31nu4llskxd6" path="res://icon.svg" id="6_03mk1"]
+[ext_resource type="Texture2D" uid="uid://06qo83p7lpjh" path="res://Sprites/Other/pixel.png" id="7_0sfuo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwy3e"]
+resource_local_to_scene = true
+shader = ExtResource("4_gxkix")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asiv6"]
+shader = ExtResource("5_bex1w")
+shader_parameter/angle = -0.3
+shader_parameter/position = -0.2
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.0700001
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.4
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 11.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.760784, 0.572549, 0.486275)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xxqo5"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0.968627, 0.945098, 0.541176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4lqr"]
+size = Vector2(3, 23)
+
+[node name="DinerBlinds" type="Node2D" groups=["interactions"]]
+position = Vector2(-50, 0)
+script = ExtResource("1_8qu4v")
+open_blinds_sprite = ExtResource("5_hnwwd")
+closed_blinds_sprite = ExtResource("5_hnwwd")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mwy3e")
+position = Vector2(-26, -30)
+texture = ExtResource("5_hnwwd")
+centered = false
+
+[node name="Rays" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_asiv6")
+position = Vector2(-101, -27)
+scale = Vector2(0.96875, 0.481)
+texture = ExtResource("6_03mk1")
+centered = false
+flip_h = true
+
+[node name="DustParticles" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(-43, 19)
+scale = Vector2(0.290909, 0.0945459)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_xxqo5")
+texture = ExtResource("7_0sfuo")
+lifetime = 3.0
+
+[node name="ClickArea" type="Area2D" parent="."]
+visible = false
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(20.5, -15.5)
+shape = SubResource("RectangleShape2D_j4lqr")

@@ -11,21 +11,35 @@ config_version=5
 [application]
 
 config/name="Project Arrow"
-run/main_scene="res://Scenes/MaleTestRoom.tscn"
+run/main_scene="res://Scenes/Ui/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-GameState="*res://Scripts/game_state.gd"
+GameState="*res://Scripts/Global/game_state.gd"
+DialogLoader="*res://Scripts/Global/dialog_loader.gd"
+WalkieTalkie="*res://walkie_talkie.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"test_character": "res://Dialogic/Characters/test_character.dch"
+"female_character": "res://Dialogic/Characters/female_character.dch",
+"little_sister": "res://Dialogic/Characters/little_sister.dch",
+"male_character": "res://Dialogic/Characters/male_character.dch"
 }
 directories/dtl_directory={
+"f_hidden_first_item": "res://Dialogic/Timelines/f_hidden_first_item.dtl",
+"f_sister_bring_toy": "res://Dialogic/Timelines/f_sister_bring_toy.dtl",
+"f_sister_solved_distraction": "res://Dialogic/Timelines/f_sister_solved_distraction.dtl",
+"f_tv_message": "res://Dialogic/Timelines/f_tv_message.dtl",
+"m_collected_first_hidden_item": "res://Dialogic/Timelines/m_collected_first_hidden_item.dtl",
+"m_found_file": "res://Dialogic/Timelines/m_found_file.dtl",
+"m_repair_walkie_talkie": "res://Dialogic/Timelines/m_repair_walkie_talkie.dtl",
+"mf_diner_cutscene": "res://Dialogic/Timelines/mf_diner_cutscene.dtl",
+"mf_first_contact": "res://Dialogic/Timelines/mf_first_contact.dtl",
+"mf_return_from_diner": "res://Dialogic/Timelines/mf_return_from_diner.dtl",
 "test_timeline": "res://Dialogic/Timelines/test_timeline.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
@@ -51,14 +65,13 @@ text/autopauses={}
 layout/style_list=["res://Styles/DefaultDialogicStyle.tres"]
 layout/default_style="res://Styles/DefaultDialogicStyle.tres"
 glossary/default_case_sensitive=true
-variables={
-"code": ""
-}
+variables={}
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=180
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
@@ -70,6 +83,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 items="Contains all items in the scene"
 interactions="All interactions"
+doors="All doors which lead to scene transitions"
 
 [input]
 

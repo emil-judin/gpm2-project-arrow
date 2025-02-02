@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://4yve2v762c7c"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/computer.gd" id="1_l0i1l"]
+[ext_resource type="Texture2D" uid="uid://bb13ek5t72sg5" path="res://Sprites/Objects/computer_with_mouse.png" id="2_cjui6"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_iw88o"]
+[ext_resource type="Texture2D" uid="uid://e0mtlx6ed171" path="res://Sprites/Objects/computer_without_mouse.png" id="2_lmym4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jisdr"]
+resource_local_to_scene = true
+shader = ExtResource("2_iw88o")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_incss"]
+size = Vector2(24, 23)
+
+[sub_resource type="Gradient" id="Gradient_vw8wi"]
+offsets = PackedFloat32Array(0, 0.681293)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fy61a"]
+gradient = SubResource("Gradient_vw8wi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Computer" type="Node2D" groups=["interactions"]]
+script = ExtResource("1_l0i1l")
+computer_with_mouse_sprite = ExtResource("2_cjui6")
+computer_without_mouse_sprite = ExtResource("2_lmym4")
+id = "computer"
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jisdr")
+position = Vector2(-12, -23)
+texture = ExtResource("2_lmym4")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_incss")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -15)
+color = Color(0.027451, 0.345098, 0.654902, 1)
+energy = 1.25
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_fy61a")

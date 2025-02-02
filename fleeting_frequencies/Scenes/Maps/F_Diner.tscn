@@ -1,0 +1,132 @@
+[gd_scene load_steps=26 format=3 uid="uid://dcfy7my048qon"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_jadbo"]
+[ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_mlre0"]
+[ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="2_u6i7g"]
+[ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/Ui/InventoryUi.tscn" id="3_l2gpl"]
+[ext_resource type="Texture2D" uid="uid://dxwbq38ku7ojo" path="res://Sprites/Maps/diner.png" id="3_mjugh"]
+[ext_resource type="PackedScene" uid="uid://bk88df0mi1gc3" path="res://Scenes/Ui/InputBlocker.tscn" id="4_egbaf"]
+[ext_resource type="PackedScene" uid="uid://cts031oq8v2b7" path="res://Scenes/Others/Camera.tscn" id="4_oup03"]
+[ext_resource type="PackedScene" uid="uid://d1811w0gduqxg" path="res://Scenes/Ui/SceneTransition.tscn" id="5_trqig"]
+[ext_resource type="PackedScene" uid="uid://bdkyp16p3mi4o" path="res://Scenes/Ui/DualViewport.tscn" id="6_g334o"]
+[ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/Managers/ItemManager.tscn" id="7_nbqn3"]
+[ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/Managers/InteractionManager.tscn" id="8_7xkax"]
+[ext_resource type="Script" path="res://Scripts/Managers/f_diner_puzzle_manager.gd" id="9_qkh28"]
+[ext_resource type="PackedScene" uid="uid://b06goj2x6qcjf" path="res://Scenes/Characters/FemalePlayer.tscn" id="11_lowoj"]
+[ext_resource type="PackedScene" uid="uid://dp2j4aah3td0" path="res://Scenes/Objects/DinerWaitingChairLeft.tscn" id="12_lekcb"]
+[ext_resource type="PackedScene" uid="uid://bpirisaf0gdn3" path="res://Scenes/Objects/DinerBar.tscn" id="14_nqi7g"]
+[ext_resource type="PackedScene" uid="uid://cncaooe2taems" path="res://Scenes/Objects/DinerStool.tscn" id="15_y41yj"]
+[ext_resource type="PackedScene" uid="uid://ddywy8x2pw7qk" path="res://Scenes/Objects/DinerBlinds.tscn" id="16_0alvc"]
+[ext_resource type="PackedScene" uid="uid://degccyhosjga6" path="res://Scenes/Objects/DinerChair.tscn" id="17_loann"]
+[ext_resource type="PackedScene" uid="uid://bltviv3gcgi3j" path="res://Scenes/Objects/DinerTable.tscn" id="18_bbrt0"]
+[ext_resource type="PackedScene" uid="uid://4dctsvjxt48y" path="res://Scenes/Objects/DinerCup.tscn" id="19_aujbp"]
+[ext_resource type="PackedScene" uid="uid://c2u4yqdoyvqff" path="res://Scenes/Objects/DinerPanel.tscn" id="21_tblji"]
+[ext_resource type="PackedScene" uid="uid://dljjefu7u61s2" path="res://Scenes/Objects/DinerLamp.tscn" id="22_ueilb"]
+[ext_resource type="PackedScene" uid="uid://b0qopfwot7ojv" path="res://Scenes/Objects/DinerDoor.tscn" id="23_o8v6y"]
+[ext_resource type="PackedScene" uid="uid://djaqtr10lbddo" path="res://Scenes/Objects/UmbrellaHolder.tscn" id="24_5doct"]
+[ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="25_3461c"]
+
+[node name="F_Diner" type="Node2D" node_paths=PackedStringArray("player", "map", "camera", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui", "input_blocker", "scene_transition", "dual_viewport")]
+position = Vector2(160, 90)
+script = ExtResource("1_jadbo")
+scene_path = "res://Scenes/F_Diner.tscn"
+player = NodePath("FemalePlayer")
+map = NodePath("Map")
+camera = NodePath("Camera")
+item_manager = NodePath("Managers/ItemManager")
+interaction_manager = NodePath("Managers/InteractionManager")
+inventory_ui = NodePath("CanvasLayer/InventoryUi")
+interaction_ui = NodePath("CanvasLayer/InteractionUi")
+input_blocker = NodePath("CanvasLayer/InputBlocker")
+scene_transition = NodePath("CanvasLayer/SceneTransition")
+dual_viewport = NodePath("CanvasLayer/DualViewport")
+
+[node name="Map" parent="." instance=ExtResource("2_mlre0")]
+position = Vector2(-160, -90)
+texture = ExtResource("3_mjugh")
+
+[node name="Camera" parent="." instance=ExtResource("4_oup03")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InteractionUi" parent="CanvasLayer" node_paths=PackedStringArray("scene_transition") instance=ExtResource("2_u6i7g")]
+scene_transition = NodePath("../SceneTransition")
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("3_l2gpl")]
+metadata/_edit_use_anchors_ = true
+
+[node name="InputBlocker" parent="CanvasLayer" instance=ExtResource("4_egbaf")]
+
+[node name="SceneTransition" parent="CanvasLayer" instance=ExtResource("5_trqig")]
+
+[node name="DualViewport" parent="CanvasLayer" instance=ExtResource("6_g334o")]
+visible = false
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="ItemManager" parent="Managers" node_paths=PackedStringArray("items_parent") instance=ExtResource("7_nbqn3")]
+items_parent = NodePath("../../Items")
+
+[node name="InteractionManager" parent="Managers" instance=ExtResource("8_7xkax")]
+
+[node name="F_DinerPuzzleManager" type="Node" parent="Managers"]
+script = ExtResource("9_qkh28")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.286853, 0.677329, 0.530953, 1)
+energy = 0.6
+blend_mode = 1
+
+[node name="DinerBar" parent="." instance=ExtResource("14_nqi7g")]
+position = Vector2(124, 46)
+
+[node name="DinerStool" parent="." instance=ExtResource("15_y41yj")]
+position = Vector2(99, 46)
+
+[node name="DinerBlinds" parent="." instance=ExtResource("16_0alvc")]
+position = Vector2(-48, 11)
+
+[node name="DinerChair" parent="." instance=ExtResource("17_loann")]
+position = Vector2(-91, 46)
+
+[node name="DinerTable" parent="." instance=ExtResource("18_bbrt0")]
+position = Vector2(-67, 46)
+
+[node name="DinerCup" parent="." instance=ExtResource("19_aujbp")]
+position = Vector2(-67, 21)
+
+[node name="DinerWaitingChairLeft" parent="." instance=ExtResource("12_lekcb")]
+position = Vector2(0, 46)
+
+[node name="DinerTable2" parent="." instance=ExtResource("18_bbrt0")]
+position = Vector2(2, 46)
+
+[node name="DinerPanel" parent="." instance=ExtResource("21_tblji")]
+position = Vector2(135, -26)
+
+[node name="DinerDoor" parent="." instance=ExtResource("23_o8v6y")]
+position = Vector2(-135, 46)
+destination_scene_path = "res://Scenes/Maps/F_Corridor.tscn"
+
+[node name="UmbrellaHolder" parent="." instance=ExtResource("24_5doct")]
+position = Vector2(-155, 46)
+
+[node name="DinerLamp" parent="." instance=ExtResource("22_ueilb")]
+position = Vector2(-49, -27)
+is_on = true
+
+[node name="DinerLamp2" parent="." instance=ExtResource("22_ueilb")]
+position = Vector2(52, -27)
+is_on = true
+
+[node name="FemalePlayer" parent="." instance=ExtResource("11_lowoj")]
+position = Vector2(-47, 46)
+
+[node name="ItemSpots" type="Node" parent="."]
+
+[node name="GroundItemSpot" parent="ItemSpots" instance=ExtResource("25_3461c")]
+position = Vector2(156, 136)
+scale = Vector2(20, 1)

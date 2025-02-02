@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://crc06nb8cvdga"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/door.gd" id="1_5fbbi"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_b4vep"]
+[ext_resource type="Texture2D" uid="uid://btx8tlxyapbag" path="res://Sprites/Objects/white_door.png" id="2_tscar"]
+[ext_resource type="AudioStream" uid="uid://b2ul8v1t25rfo" path="res://Audio/door.wav" id="4_uvalj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hagry"]
+resource_local_to_scene = true
+shader = ExtResource("2_b4vep")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/flip_h = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_incss"]
+size = Vector2(32, 67)
+
+[node name="WhiteDoor" type="Node2D" groups=["doors", "interactions"]]
+script = ExtResource("1_5fbbi")
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hagry")
+position = Vector2(-16, -67)
+texture = ExtResource("2_tscar")
+centered = false
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0, -33.5)
+shape = SubResource("RectangleShape2D_incss")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uvalj")
+volume_db = -10.0
