@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://4yve2v762c7c"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/computer.gd" id="1_l0i1l"]
+[ext_resource type="Script" uid="uid://b2plvi8o1etsy" path="res://Scripts/Interactions/computer.gd" id="1_l0i1l"]
 [ext_resource type="Texture2D" uid="uid://bb13ek5t72sg5" path="res://Sprites/Objects/computer_with_mouse.png" id="2_cjui6"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_iw88o"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_iw88o"]
 [ext_resource type="Texture2D" uid="uid://e0mtlx6ed171" path="res://Sprites/Objects/computer_without_mouse.png" id="2_lmym4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jisdr"]

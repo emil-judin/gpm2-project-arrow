@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://d1811w0gduqxg"]
 
-[ext_resource type="Script" path="res://Scripts/Ui/scene_transition.gd" id="1_u8e73"]
+[ext_resource type="Script" uid="uid://f146gdn7mor8" path="res://Scripts/Ui/scene_transition.gd" id="1_u8e73"]
 [ext_resource type="Texture2D" uid="uid://3rnsjvkc8kc0" path="res://Sprites/Other/melting_background.png" id="2_ff7y1"]
-[ext_resource type="Shader" path="res://Shaders/melting.gdshader" id="3_eh6ju"]
-[ext_resource type="Script" path="res://Scripts/Ui/melting_scene_transition.gd" id="4_a7yro"]
-[ext_resource type="Shader" path="res://Shaders/pixelation.gdshader" id="5_wklal"]
-[ext_resource type="Script" path="res://Scripts/Ui/pixelation.gd" id="6_8x7e3"]
+[ext_resource type="Shader" uid="uid://00l25rdf0fx8" path="res://Shaders/melting.gdshader" id="3_eh6ju"]
+[ext_resource type="Script" uid="uid://chpb53cm08wsq" path="res://Scripts/Ui/melting_scene_transition.gd" id="4_a7yro"]
+[ext_resource type="Shader" uid="uid://b2v2nyxrqypt1" path="res://Shaders/pixelation.gdshader" id="5_wklal"]
+[ext_resource type="Script" uid="uid://16ac8b2cgpi6" path="res://Scripts/Ui/pixelation.gd" id="6_8x7e3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3a8sl"]
 shader = ExtResource("3_eh6ju")
@@ -106,9 +106,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mab8y"]
 _data = {
-"RESET": SubResource("Animation_6vjj6"),
-"pixel_in": SubResource("Animation_c6n1g"),
-"pixel_out": SubResource("Animation_vcrn7")
+&"RESET": SubResource("Animation_6vjj6"),
+&"pixel_in": SubResource("Animation_c6n1g"),
+&"pixel_out": SubResource("Animation_vcrn7")
 }
 
 [node name="SceneTransition" type="Control"]

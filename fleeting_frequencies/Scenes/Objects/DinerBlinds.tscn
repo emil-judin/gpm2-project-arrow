@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://ddywy8x2pw7qk"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/blinds.gd" id="1_8qu4v"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="4_gxkix"]
-[ext_resource type="Shader" path="res://Shaders/light_rays.gdshader" id="5_bex1w"]
+[ext_resource type="Script" uid="uid://bm135w63iwj8d" path="res://Scripts/Interactions/blinds.gd" id="1_8qu4v"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="4_gxkix"]
+[ext_resource type="Shader" uid="uid://cjug5qk2sd5lg" path="res://Shaders/light_rays.gdshader" id="5_bex1w"]
 [ext_resource type="Texture2D" uid="uid://or34mad1yhny" path="res://Sprites/Objects/diner-windows.png" id="5_hnwwd"]
 [ext_resource type="Texture2D" uid="uid://b31nu4llskxd6" path="res://icon.svg" id="6_03mk1"]
 [ext_resource type="Texture2D" uid="uid://06qo83p7lpjh" path="res://Sprites/Other/pixel.png" id="7_0sfuo"]

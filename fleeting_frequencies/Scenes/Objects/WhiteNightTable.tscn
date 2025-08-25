@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://586kqlnhv7la"]
 
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_g0cv1"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_g0cv1"]
 [ext_resource type="Texture2D" uid="uid://b1auvj6c44l13" path="res://Sprites/Objects/female-nighttable.png" id="2_sjob7"]
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_3fjrp"]
 

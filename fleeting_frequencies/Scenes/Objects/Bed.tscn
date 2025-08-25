@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbwohcai0r2j4"]
 
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_4fuxu"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_4fuxu"]
 [ext_resource type="Texture2D" uid="uid://dx5nt67l8peo8" path="res://Sprites/Objects/bed.png" id="2_1x0ut"]
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_jc4w2"]
 

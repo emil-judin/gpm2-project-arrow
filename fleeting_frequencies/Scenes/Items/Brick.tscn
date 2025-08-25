@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b37o1ku0w3sd"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_yc2lm"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_tltfq"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_yc2lm"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_tltfq"]
 [ext_resource type="Texture2D" uid="uid://jk21nopljeg4" path="res://Sprites/Items/brick.png" id="3_mpctc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y1qjl"]

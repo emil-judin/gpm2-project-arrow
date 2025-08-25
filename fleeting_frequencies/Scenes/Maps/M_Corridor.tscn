@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://daaj2k48rxhm6"]
+[gd_scene load_steps=28 format=3 uid="uid://daaj2k48rxhm6"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_4d1gm"]
+[ext_resource type="Script" uid="uid://bheq3sqmbb2ix" path="res://Scripts/Managers/game_manager.gd" id="1_4d1gm"]
 [ext_resource type="Texture2D" uid="uid://pc5bvipbjmsb" path="res://Sprites/Maps/m_corridor.png" id="2_1rpur"]
 [ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_fj7t1"]
 [ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="3_7f3ch"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="24_vu0jp"]
 [ext_resource type="PackedScene" uid="uid://c5nrmc80aenlr" path="res://Scenes/Items/ScrewDriver.tscn" id="25_jfnhw"]
 [ext_resource type="PackedScene" uid="uid://dikbuvcvmf4nw" path="res://Scenes/Items/Wires.tscn" id="26_cgq4w"]
+[ext_resource type="Script" uid="uid://2lv7q0l7wur5" path="res://Scripts/bug_fix.gd" id="27_0e1th"]
 
 [node name="M_Corridor" type="Node2D" node_paths=PackedStringArray("player", "map", "camera", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui", "input_blocker", "scene_transition")]
 position = Vector2(160, 90)
@@ -142,3 +143,7 @@ locked = true
 [node name="GroundItemSpot" parent="ItemSpots" instance=ExtResource("24_vu0jp")]
 position = Vector2(156, 136)
 scale = Vector2(40, 1)
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("door_down")]
+script = ExtResource("27_0e1th")
+door_down = NodePath("../WhiteStairCaseDown")

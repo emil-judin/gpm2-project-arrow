@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsh031vqqd6qh"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_bby1d"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_267hc"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_bby1d"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_267hc"]
 [ext_resource type="Texture2D" uid="uid://cjsmx26jupin" path="res://Sprites/Objects/medium-cardboard.png" id="3_f7r7v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpirisaf0gdn3"]
 
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_kdjwv"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_kdjwv"]
 [ext_resource type="Texture2D" uid="uid://bn3bkjatl187u" path="res://Sprites/Objects/diner-bar.png" id="2_6povu"]
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_p8y6p"]
 

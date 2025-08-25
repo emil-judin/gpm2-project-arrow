@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk88df0mi1gc3"]
 
-[ext_resource type="Script" path="res://Scripts/Ui/input_blocker.gd" id="1_l4l5h"]
+[ext_resource type="Script" uid="uid://jbxx36ef3gxs" path="res://Scripts/Ui/input_blocker.gd" id="1_l4l5h"]
 
 [node name="InputBlocker" type="Control"]
 z_index = 1000

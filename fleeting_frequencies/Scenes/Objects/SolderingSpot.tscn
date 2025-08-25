@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://2sr64ndlmb4m"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/soldering_spot.gd" id="1_uci25"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_vrkxe"]
+[ext_resource type="Script" uid="uid://xrxuradi2spm" path="res://Scripts/Interactions/soldering_spot.gd" id="1_uci25"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_vrkxe"]
 [ext_resource type="Texture2D" uid="uid://bk8k36x253544" path="res://Sprites/Objects/walkie_talkie.png" id="3_xufei"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13hot"]

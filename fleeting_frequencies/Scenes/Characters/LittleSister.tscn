@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ds2fbx1nbu2e8"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/little_sister.gd" id="1_k0bws"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_6lale"]
+[ext_resource type="Script" uid="uid://xrjv4x4vdagr" path="res://Scripts/Characters/little_sister.gd" id="1_k0bws"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_6lale"]
 [ext_resource type="Texture2D" uid="uid://dwagacc5resln" path="res://Sprites/Characters/little-sister-standing.png" id="3_yft7l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5unkk"]

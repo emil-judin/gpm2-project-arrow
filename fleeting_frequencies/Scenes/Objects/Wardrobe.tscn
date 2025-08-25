@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu34oval5t6v1"]
 
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_box5k"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_box5k"]
 [ext_resource type="Texture2D" uid="uid://bmrscqm72616a" path="res://Sprites/Objects/wardrobe.png" id="2_v7ook"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]

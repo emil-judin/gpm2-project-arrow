@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dcfy7my048qon"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_jadbo"]
+[ext_resource type="Script" uid="uid://bheq3sqmbb2ix" path="res://Scripts/Managers/game_manager.gd" id="1_jadbo"]
 [ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_mlre0"]
 [ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="2_u6i7g"]
 [ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/Ui/InventoryUi.tscn" id="3_l2gpl"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bdkyp16p3mi4o" path="res://Scenes/Ui/DualViewport.tscn" id="6_g334o"]
 [ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/Managers/ItemManager.tscn" id="7_nbqn3"]
 [ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/Managers/InteractionManager.tscn" id="8_7xkax"]
-[ext_resource type="Script" path="res://Scripts/Managers/f_diner_puzzle_manager.gd" id="9_qkh28"]
+[ext_resource type="Script" uid="uid://cvn7x8l7b4ok7" path="res://Scripts/Managers/f_diner_puzzle_manager.gd" id="9_qkh28"]
 [ext_resource type="PackedScene" uid="uid://b06goj2x6qcjf" path="res://Scenes/Characters/FemalePlayer.tscn" id="11_lowoj"]
 [ext_resource type="PackedScene" uid="uid://dp2j4aah3td0" path="res://Scenes/Objects/DinerWaitingChairLeft.tscn" id="12_lekcb"]
 [ext_resource type="PackedScene" uid="uid://bpirisaf0gdn3" path="res://Scenes/Objects/DinerBar.tscn" id="14_nqi7g"]

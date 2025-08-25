@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://glb12eplrrfq"]
 
-[ext_resource type="Script" path="res://Scripts/map.gd" id="1_25cg6"]
+[ext_resource type="Script" uid="uid://dt4ppirvcib7f" path="res://Scripts/map.gd" id="1_25cg6"]
 
 [node name="Map" type="Sprite2D"]
 centered = false

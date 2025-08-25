@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0qopfwot7ojv"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/door.gd" id="1_q4myw"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_r4nlv"]
+[ext_resource type="Script" uid="uid://davy0oiikbc8d" path="res://Scripts/Interactions/door.gd" id="1_q4myw"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_r4nlv"]
 [ext_resource type="Texture2D" uid="uid://o63e3q4qxpxi" path="res://Sprites/Objects/diner-door.png" id="3_oqfyj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hagry"]

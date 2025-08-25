@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://b63upfjafi51j"]
 
 [ext_resource type="Texture2D" uid="uid://dqnjvq3ufrux2" path="res://Sprites/Objects/blinds_open.png" id="1_sod2s"]
-[ext_resource type="Script" path="res://Scripts/Interactions/blinds.gd" id="1_yix7r"]
-[ext_resource type="Shader" path="res://Shaders/light_rays.gdshader" id="2_mux0a"]
+[ext_resource type="Script" uid="uid://bm135w63iwj8d" path="res://Scripts/Interactions/blinds.gd" id="1_yix7r"]
+[ext_resource type="Shader" uid="uid://cjug5qk2sd5lg" path="res://Shaders/light_rays.gdshader" id="2_mux0a"]
 [ext_resource type="Texture2D" uid="uid://b31nu4llskxd6" path="res://icon.svg" id="3_6al10"]
 [ext_resource type="Texture2D" uid="uid://oowd6tw40vr3" path="res://Sprites/Objects/blinds_closed.png" id="3_v80sv"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="4_i3jd5"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="4_i3jd5"]
 [ext_resource type="Texture2D" uid="uid://06qo83p7lpjh" path="res://Sprites/Other/pixel.png" id="4_v17am"]
 [ext_resource type="AudioStream" uid="uid://ejptfng7srni" path="res://Audio/blinds.mp3" id="8_6bqxo"]
 

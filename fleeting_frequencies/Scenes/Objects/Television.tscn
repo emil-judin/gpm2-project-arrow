@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfi7h8efk7r02"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/television.gd" id="1_d6cbj"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="4_ehqo3"]
+[ext_resource type="Script" uid="uid://c1r0567metplw" path="res://Scripts/Interactions/television.gd" id="1_d6cbj"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="4_ehqo3"]
 [ext_resource type="Texture2D" uid="uid://tamsy1v7xty1" path="res://Sprites/Objects/small_tv.png" id="5_up41g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jisdr"]

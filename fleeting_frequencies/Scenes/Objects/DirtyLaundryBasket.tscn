@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://xdd12y0ni56t"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_1kg6h"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_1txtq"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_1kg6h"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_1txtq"]
 [ext_resource type="Texture2D" uid="uid://c1u14bnb83sn7" path="res://Sprites/Objects/basket-full.png" id="2_8dfms"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]

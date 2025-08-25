@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://daxuge4p5frci"]
+[gd_scene load_steps=13 format=3 uid="uid://daxuge4p5frci"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/blinds.gd" id="1_4cs0t"]
+[ext_resource type="Script" uid="uid://bm135w63iwj8d" path="res://Scripts/Interactions/blinds.gd" id="1_4cs0t"]
 [ext_resource type="Texture2D" uid="uid://k4o04awtcifj" path="res://Sprites/Objects/blinds-side-open.png" id="2_7rn81"]
 [ext_resource type="Texture2D" uid="uid://cv0qaiivkfdpr" path="res://Sprites/Objects/blinds-side-closed.png" id="3_oto2r"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="4_b1lb2"]
-[ext_resource type="Shader" path="res://Shaders/light_rays.gdshader" id="5_v5iny"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="4_b1lb2"]
+[ext_resource type="Shader" uid="uid://cjug5qk2sd5lg" path="res://Shaders/light_rays.gdshader" id="5_v5iny"]
 [ext_resource type="Texture2D" uid="uid://b31nu4llskxd6" path="res://icon.svg" id="6_sxgt3"]
 [ext_resource type="Texture2D" uid="uid://06qo83p7lpjh" path="res://Sprites/Other/pixel.png" id="7_fbku0"]
+[ext_resource type="AudioStream" uid="uid://ejptfng7srni" path="res://Audio/blinds.mp3" id="8_sgwm1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwy3e"]
 resource_local_to_scene = true
@@ -79,3 +80,7 @@ lifetime = 3.0
 [node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
 position = Vector2(-24, -14.75)
 shape = SubResource("RectangleShape2D_j4lqr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_sgwm1")
+volume_db = -10.0

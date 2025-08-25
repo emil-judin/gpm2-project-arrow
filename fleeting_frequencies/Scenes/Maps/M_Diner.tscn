@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dbrwg7aqhbnkf"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_hamn0"]
+[ext_resource type="Script" uid="uid://bheq3sqmbb2ix" path="res://Scripts/Managers/game_manager.gd" id="1_hamn0"]
 [ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="2_8joir"]
 [ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_rlboc"]
 [ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/Ui/InventoryUi.tscn" id="3_4d16t"]

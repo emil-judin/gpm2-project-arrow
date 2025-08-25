@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://p6jc4yl1vmvk"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_5pri3"]
+[ext_resource type="Script" uid="uid://bheq3sqmbb2ix" path="res://Scripts/Managers/game_manager.gd" id="1_5pri3"]
 [ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="2_28hki"]
 [ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_eocac"]
 [ext_resource type="PackedScene" uid="uid://clnuxrer137nq" path="res://Scenes/Ui/InventoryUi.tscn" id="3_3hajc"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d1811w0gduqxg" path="res://Scenes/Ui/SceneTransition.tscn" id="5_ghtmg"]
 [ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/Managers/ItemManager.tscn" id="6_rjyav"]
 [ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/Managers/InteractionManager.tscn" id="7_i106o"]
-[ext_resource type="Script" path="res://Scripts/Managers/f_sister_puzzle_manager.gd" id="8_nn74p"]
+[ext_resource type="Script" uid="uid://cl8qmu20xfcna" path="res://Scripts/Managers/f_sister_puzzle_manager.gd" id="8_nn74p"]
 [ext_resource type="PackedScene" uid="uid://b37o1ku0w3sd" path="res://Scenes/Items/Brick.tscn" id="11_ljo0m"]
 [ext_resource type="PackedScene" uid="uid://crc06nb8cvdga" path="res://Scenes/Objects/WhiteDoor.tscn" id="13_fp0b2"]
 [ext_resource type="PackedScene" uid="uid://b06goj2x6qcjf" path="res://Scenes/Characters/FemalePlayer.tscn" id="14_ovyye"]

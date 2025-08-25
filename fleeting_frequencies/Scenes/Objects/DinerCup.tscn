@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4dctsvjxt48y"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_5gvrb"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_86w8n"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_5gvrb"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_86w8n"]
 [ext_resource type="Texture2D" uid="uid://c1sdxeqowns23" path="res://Sprites/Objects/diner-cup.png" id="3_claua"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://7585laj74vij"]
 
-[ext_resource type="Script" path="res://Scripts/Ui/item_hint.gd" id="1_663co"]
+[ext_resource type="Script" uid="uid://btfyufxtqnjxh" path="res://Scripts/Ui/item_hint.gd" id="1_663co"]
 [ext_resource type="FontFile" uid="uid://bm851u6yhhycy" path="res://Fonts/retropix.ttf" id="2_hqnq0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlj66"]

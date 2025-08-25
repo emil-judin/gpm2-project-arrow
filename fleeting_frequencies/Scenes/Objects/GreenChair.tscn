@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://0f7wq2a0g8qf"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/chair.gd" id="1_e6nsp"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_lh26k"]
+[ext_resource type="Script" uid="uid://u5l1x0f72dam" path="res://Scripts/Interactions/chair.gd" id="1_e6nsp"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_lh26k"]
 [ext_resource type="Texture2D" uid="uid://dviah7snbcmkd" path="res://Sprites/Objects/female-chair.png" id="3_8ykoo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]

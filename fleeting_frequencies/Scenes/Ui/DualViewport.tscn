@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bdkyp16p3mi4o"]
 
-[ext_resource type="Script" path="res://Scripts/Ui/dual_viewport.gd" id="1_f6imn"]
-[ext_resource type="Shader" path="res://Shaders/beam.gdshader" id="2_agkw3"]
+[ext_resource type="Script" uid="uid://run7ql1ax36j" path="res://Scripts/Ui/dual_viewport.gd" id="1_f6imn"]
+[ext_resource type="Shader" uid="uid://dl64ghcf8b0fj" path="res://Shaders/beam.gdshader" id="2_agkw3"]
 
 [sub_resource type="Animation" id="Animation_g0al2"]
 length = 0.001
@@ -188,11 +188,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uuu3f"]
 _data = {
-"RESET": SubResource("Animation_g0al2"),
-"slide_in_left": SubResource("Animation_7ibtm"),
-"slide_in_right": SubResource("Animation_xjrw2"),
-"slide_out_left": SubResource("Animation_k7pmn"),
-"slide_out_right": SubResource("Animation_ayitp")
+&"RESET": SubResource("Animation_g0al2"),
+&"slide_in_left": SubResource("Animation_7ibtm"),
+&"slide_in_right": SubResource("Animation_xjrw2"),
+&"slide_out_left": SubResource("Animation_k7pmn"),
+&"slide_out_right": SubResource("Animation_ayitp")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgm7l"]

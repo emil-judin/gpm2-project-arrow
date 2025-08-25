@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dytp3kqr7x2v8"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/npc.gd" id="1_u615f"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_6lale"]
+[ext_resource type="Script" uid="uid://da6hyy0bnoh12" path="res://Scripts/Characters/npc.gd" id="1_u615f"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_6lale"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5unkk"]
 resource_local_to_scene = true

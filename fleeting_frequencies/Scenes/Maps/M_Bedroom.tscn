@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://bv810eum4yasy"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_b00sx"]
+[ext_resource type="Script" uid="uid://bheq3sqmbb2ix" path="res://Scripts/Managers/game_manager.gd" id="1_b00sx"]
 [ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_0mbkj"]
 [ext_resource type="Texture2D" uid="uid://dxxn0uou8ne6a" path="res://Sprites/Maps/m_bedroom.png" id="2_24cmv"]
 [ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="3_581d6"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d1811w0gduqxg" path="res://Scenes/Ui/SceneTransition.tscn" id="7_q2axl"]
 [ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/Managers/ItemManager.tscn" id="8_353qo"]
 [ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/Managers/InteractionManager.tscn" id="9_3jdng"]
-[ext_resource type="Script" path="res://Scripts/Managers/m_bedroom_puzzle_manager.gd" id="10_bab0f"]
+[ext_resource type="Script" uid="uid://cl3ib3tbnnd6e" path="res://Scripts/Managers/m_bedroom_puzzle_manager.gd" id="10_bab0f"]
 [ext_resource type="PackedScene" uid="uid://dxbcho2hyuks6" path="res://Scenes/Characters/MalePlayer.tscn" id="13_151bo"]
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="14_xmd7l"]
 [ext_resource type="PackedScene" uid="uid://b63upfjafi51j" path="res://Scenes/Objects/Blinds.tscn" id="15_kcxfk"]

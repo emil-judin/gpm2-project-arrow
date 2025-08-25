@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://qelm8awf3soe"]
 
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_d3kxe"]
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_masft"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_d3kxe"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_masft"]
 [ext_resource type="Texture2D" uid="uid://bykqh1i06j4ls" path="res://Sprites/Objects/flowey.png" id="2_gjel2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]

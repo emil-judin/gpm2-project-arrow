@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5tbprfexp1yh"]
 
-[ext_resource type="Script" path="res://Scripts/Ui/main_menu.gd" id="1_g2dfh"]
+[ext_resource type="Script" uid="uid://dgs4hp5xuuubj" path="res://Scripts/Ui/main_menu.gd" id="1_g2dfh"]
 [ext_resource type="FontFile" uid="uid://bm851u6yhhycy" path="res://Fonts/retropix.ttf" id="2_e6q2r"]
 [ext_resource type="Texture2D" uid="uid://dj5g2fbbqscpd" path="res://Sprites/Other/File.png" id="3_kcf3h"]
-[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_fsff0"]
+[ext_resource type="Shader" uid="uid://dsrbvm7a7ygp1" path="res://Shaders/crt.gdshader" id="4_fsff0"]
 [ext_resource type="AudioStream" uid="uid://df4fusg3r6hyj" path="res://Audio/mouse_click.wav" id="5_wo7q8"]
 [ext_resource type="AudioStream" uid="uid://8yo1qu8a2bnf" path="res://Audio/neon.mp3" id="6_8gx4r"]
 

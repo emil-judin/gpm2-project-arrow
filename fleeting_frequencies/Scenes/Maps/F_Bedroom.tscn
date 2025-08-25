@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://jpgcny5uwh53"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_2n8h1"]
+[ext_resource type="Script" uid="uid://bheq3sqmbb2ix" path="res://Scripts/Managers/game_manager.gd" id="1_2n8h1"]
 [ext_resource type="PackedScene" uid="uid://glb12eplrrfq" path="res://Scenes/Maps/Map.tscn" id="2_0uy7i"]
 [ext_resource type="PackedScene" uid="uid://bd7og5mw6wyob" path="res://Scenes/Ui/InteractionUi.tscn" id="2_hea2p"]
 [ext_resource type="Texture2D" uid="uid://b53gc7mr14ahg" path="res://Sprites/Maps/female-bedroom.png" id="3_hta4t"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d1811w0gduqxg" path="res://Scenes/Ui/SceneTransition.tscn" id="5_0oqsj"]
 [ext_resource type="PackedScene" uid="uid://bub0buj8v2i70" path="res://Scenes/Managers/ItemManager.tscn" id="6_qdk1v"]
 [ext_resource type="PackedScene" uid="uid://bgg3wtgyixxni" path="res://Scenes/Managers/InteractionManager.tscn" id="7_rrr01"]
-[ext_resource type="Script" path="res://Scripts/Managers/f_bedroom_puzzle_manager.gd" id="8_vf8va"]
+[ext_resource type="Script" uid="uid://b5kjmnqyew78h" path="res://Scripts/Managers/f_bedroom_puzzle_manager.gd" id="8_vf8va"]
 [ext_resource type="PackedScene" uid="uid://cts0h8sbw20sh" path="res://Scenes/Items/Mouse.tscn" id="9_wn2hy"]
 [ext_resource type="PackedScene" uid="uid://drgq5uwjdwnmt" path="res://Scenes/Others/HideSpot.tscn" id="10_f5au8"]
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="11_ehp4k"]
@@ -29,14 +29,13 @@
 [ext_resource type="PackedScene" uid="uid://xj700i2chfqp" path="res://Scenes/Items/Doll.tscn" id="25_dirjd"]
 [ext_resource type="PackedScene" uid="uid://bmcfay66g1507" path="res://Scenes/Items/PlayCar.tscn" id="26_kbu44"]
 
-[node name="F_Bedroom" type="Node2D" node_paths=PackedStringArray("player", "map", "camera", "item_manager", "interaction_manager", "inventory_ui", "interaction_ui", "input_blocker", "scene_transition")]
+[node name="F_Bedroom" type="Node2D" node_paths=PackedStringArray("player", "map", "camera", "interaction_manager", "inventory_ui", "interaction_ui", "input_blocker", "scene_transition")]
 position = Vector2(160, 90)
 script = ExtResource("1_2n8h1")
 scene_path = "res://Scenes/F_Bedroom.tscn"
 player = NodePath("FemalePlayer")
 map = NodePath("Map")
 camera = NodePath("Camera")
-item_manager = NodePath("Managers/ItemManager")
 interaction_manager = NodePath("Managers/InteractionManager")
 inventory_ui = NodePath("CanvasLayer/InventoryUi")
 interaction_ui = NodePath("CanvasLayer/InteractionUi")

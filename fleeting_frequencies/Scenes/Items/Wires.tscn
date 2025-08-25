@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dikbuvcvmf4nw"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_swhoy"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_yusvq"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_swhoy"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_yusvq"]
 [ext_resource type="Texture2D" uid="uid://d27hlmjie2mdv" path="res://Sprites/Items/batteries.png" id="3_rbfjg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y1qjl"]

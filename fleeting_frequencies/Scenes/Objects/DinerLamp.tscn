@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dljjefu7u61s2"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/toggle_light.gd" id="1_bl4a7"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_0wm7p"]
+[ext_resource type="Script" uid="uid://dlilj8cuxabgi" path="res://Scripts/Interactions/toggle_light.gd" id="1_bl4a7"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_0wm7p"]
 [ext_resource type="Texture2D" uid="uid://y7tpyautssja" path="res://Sprites/Objects/diner-lamp.png" id="3_5atmu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udna0"]

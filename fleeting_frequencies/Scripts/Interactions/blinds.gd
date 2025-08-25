@@ -19,6 +19,7 @@ func _ready():
 func handle_interaction(game_manager: GameManager = null):
 	is_open = !is_open
 	audio_stream_player.play()
+	audio_stream_player.play()
 	update_state()
 
 func update_state():

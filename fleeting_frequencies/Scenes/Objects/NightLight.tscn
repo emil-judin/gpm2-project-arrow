@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://byja3rt7oer5"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/lava_lamp.gd" id="1_wk66a"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_rkhyg"]
+[ext_resource type="Script" uid="uid://ck24bghrib2od" path="res://Scripts/Interactions/lava_lamp.gd" id="1_wk66a"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_rkhyg"]
 [ext_resource type="Texture2D" uid="uid://d2nljhpqqwuh2" path="res://Sprites/Objects/female-light.png" id="3_dn2hl"]
 [ext_resource type="AudioStream" uid="uid://bby47faagw3wr" path="res://Audio/light.wav" id="4_8eth5"]
 

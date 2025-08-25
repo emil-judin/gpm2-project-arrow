@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnn5ekaaxpriy"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_qojhd"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_euywq"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_qojhd"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_euywq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ayavd"]
 resource_local_to_scene = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c56mllohvkr2h"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/toggle_light.gd" id="1_wikhy"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_e1rq8"]
+[ext_resource type="Script" uid="uid://dlilj8cuxabgi" path="res://Scripts/Interactions/toggle_light.gd" id="1_wikhy"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_e1rq8"]
 [ext_resource type="Texture2D" uid="uid://c8arwo3ma681h" path="res://Sprites/Objects/ceiling_lamp.png" id="2_m1ffk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udna0"]

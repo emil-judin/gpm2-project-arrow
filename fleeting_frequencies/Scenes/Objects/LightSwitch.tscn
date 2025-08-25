@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ce2p0pallp6yd"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/light_switch.gd" id="1_vhd25"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_0vc7p"]
+[ext_resource type="Script" uid="uid://c0ty3d2jbl3on" path="res://Scripts/Interactions/light_switch.gd" id="1_vhd25"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_0vc7p"]
 [ext_resource type="Texture2D" uid="uid://qtxw1bwdax1w" path="res://Sprites/Objects/light_switch.png" id="2_7ehkb"]
 [ext_resource type="AudioStream" uid="uid://bby47faagw3wr" path="res://Audio/light.wav" id="4_g88qj"]
 

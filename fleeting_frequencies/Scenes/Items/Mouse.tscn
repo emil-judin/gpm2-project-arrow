@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cts0h8sbw20sh"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_hjp6e"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_qdnt7"]
+[ext_resource type="Script" uid="uid://8e5e5gxsogih" path="res://Scripts/Items/item.gd" id="1_hjp6e"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_qdnt7"]
 [ext_resource type="Texture2D" uid="uid://dvldpldmg83jb" path="res://Sprites/Items/computer_mouse.png" id="2_noxja"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_adxc1"]

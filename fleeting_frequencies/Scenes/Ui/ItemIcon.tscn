@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://docu6t1kotx4w"]
 
-[ext_resource type="Script" path="res://Scripts/Ui/drag.gd" id="1_xungo"]
+[ext_resource type="Script" uid="uid://ca73o26fjk07b" path="res://Scripts/Ui/drag.gd" id="1_xungo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4a08b"]
 

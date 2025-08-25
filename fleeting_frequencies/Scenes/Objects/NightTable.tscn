@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://kbm5e7rg17eo"]
 
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="1_ga7ql"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="1_ga7ql"]
 [ext_resource type="Texture2D" uid="uid://bmn5u6n45hdnf" path="res://Sprites/Objects/night_table.png" id="2_njuao"]
 [ext_resource type="PackedScene" uid="uid://clxtj8hg65udy" path="res://Scenes/Others/ItemSpot.tscn" id="3_qvn5e"]
 

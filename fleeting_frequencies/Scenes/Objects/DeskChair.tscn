@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0ldldfcauqgg"]
 
-[ext_resource type="Script" path="res://Scripts/Interactions/chair.gd" id="1_jokm6"]
-[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_2klx0"]
+[ext_resource type="Script" uid="uid://u5l1x0f72dam" path="res://Scripts/Interactions/chair.gd" id="1_jokm6"]
+[ext_resource type="Shader" uid="uid://cd2rhwkgwt5hw" path="res://Shaders/outline.gdshader" id="2_2klx0"]
 [ext_resource type="Texture2D" uid="uid://orhf6s851n45" path="res://Sprites/Objects/desk_chair.png" id="3_tbas7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c25nr"]
